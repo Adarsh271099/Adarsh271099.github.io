@@ -136,17 +136,18 @@
         return false;
     });
 
-    // Show More Services Button
     document.addEventListener("DOMContentLoaded", function () {
-        var showMoreBtn = document.getElementById("showMoreBtn");
-        if (showMoreBtn) {
-            showMoreBtn.addEventListener("click", function (event) {
-                event.preventDefault();
-                document.getElementById("more-services").style.display = "flex";
-                this.style.display = "none"; // Hide "Services More" button after clicking
-            });
-        }
-    });
+    var showMoreBtn = document.getElementById("showMoreBtn");
+    var moreServices = document.getElementById("more-services");
+
+    if (showMoreBtn && moreServices) {
+        showMoreBtn.addEventListener("click", function (event) {
+            event.preventDefault();
+            moreServices.style.display = "block"; // Change "flex" to "block" for better layout control
+            showMoreBtn.style.display = "none"; // Hide "Services More" button after clicking
+        });
+    }
+});
 
 })(jQuery);
 
