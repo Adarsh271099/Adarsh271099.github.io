@@ -946,6 +946,13 @@
 .footer .footer-item-post .footer-btn a:hover {
     color: var(--bs-dark);
 }
+
+.footer .footer-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
 /*** Footer End ***/
 
 /*** copyright Start ***/
