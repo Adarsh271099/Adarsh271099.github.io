@@ -143,8 +143,10 @@
     if (showMoreBtn && moreServices) {
         showMoreBtn.addEventListener("click", function (event) {
             event.preventDefault();
-            moreServices.style.display = "block"; // Change "flex" to "block" for better layout control
-            showMoreBtn.style.display = "none"; // Hide "Services More" button after clicking
+            moreServices.style.display = "flex";
+            moreServices.style.flexWrap = "wrap"; // Ensures items go side by side
+            moreServices.style.justifyContent = "center"; // Centers the items
+            this.style.display = "none"; // Hide "Services More" button after clicking
         });
     }
 });
