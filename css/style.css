@@ -954,3 +954,10 @@
     background: var(--bs-dark) !important;
 }
 /*** copyright end ***/
+
+.more-services {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Aligns services side by side */
+    gap: 20px; /* Adds space between services */
+}
