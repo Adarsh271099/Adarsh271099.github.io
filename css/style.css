@@ -414,7 +414,23 @@
     }
 }
 /*** Header Carousel End ***/
+/*** complain bard start***/
+.complaint-table {
+    width: calc(100% - 200px); /* Giving 100px space on both left and right */
+    margin: 50px auto; /* 50px space between tables and centering them */
+    border-collapse: collapse;
+}
 
+.complaint-table th, .complaint-table td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+.complaint-table th {
+    background-color: yellow;
+}
+/*** complain bard end***/
 /*** Single Page Hero Header Start ***/
 .bg-breadcrumb {
     position: relative;
