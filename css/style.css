@@ -431,6 +431,42 @@
     background-color: yellow;
 }
 /*** complain bard end***/
+/*** offer bard start***/
+.offer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 50px;
+    margin: 50px 0;
+}
+
+.offer-column {
+    width: 48%; /* Side by side on larger screens */
+    min-width: 0; /* Allows flex item to shrink below content's minimum width */
+    flex-shrink: 1;
+}
+
+.text-content {
+    overflow: hidden; /* Hides overflowed text */
+    text-overflow: ellipsis; /* Adds ellipsis (...) to indicate overflow */
+    white-space: nowrap; /* Prevents text from wrapping to the next line */
+}
+
+@media (max-width: 768px) { /* Mobile responsiveness */
+    .offer-container {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .offer-column {
+        width: 100%; /* Stack one below another */
+        margin-bottom: 20px;
+    }
+}
+
+/*** offxer bard end***/
+
+
 /*** Single Page Hero Header Start ***/
 .bg-breadcrumb {
     position: relative;
