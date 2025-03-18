@@ -465,8 +465,108 @@
 }
 
 /*** offxer bard end***/
+/*** OPTION CALL PRICES board start***/
+.plan-box {
+    border: 3px solid;
+    padding: 20px;
+    border-radius: 12px;
+    width: 300px;
+    text-align: center;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+    position: relative;
+}
+
+.plan-box:hover {
+    transform: scale(1.07);
+}
+
+.plan-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.old-price {
+    font-size: 18px;
+    color: #d32f2f;
+    text-decoration: line-through;
+    font-weight: bold;
+}
+
+.new-price {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ff5722;
+    background: linear-gradient(45deg, #ff9800, #ff5722);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: price-blink 1s infinite alternate;
+}
+
+@keyframes price-blink {
+    0% { opacity: 1; }
+    100% { opacity: 0.8; }
+}
+
+.offer-text {
+    font-size: 14px;
+    color: #34a853;
+    font-weight: bold;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.best-deal {
+    background: #ffeb3b;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+    border-radius: 5px;
+}
+
+.button {
+    background-color: #ff9800;
+    color: white;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    display: inline-block;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s ease-in-out;
+}
+
+.button:hover {
+    background-color: #ff5722;
+}
+
+/* Specific plan styles */
+.basic {
+    border-color: #f4b400;
+}
+
+.advanced {
+    border-color: #4285f4;
+}
+
+.premium {
+    border-color: #34a853;
+}
 
 
+/*** OPTION CALL PRICES board end***/
 /*** Single Page Hero Header Start ***/
 .bg-breadcrumb {
     position: relative;
