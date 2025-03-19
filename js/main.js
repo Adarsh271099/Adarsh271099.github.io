@@ -10,11 +10,9 @@
         }, 1);
     };
     spinner(0);
-    
-    
+
     // Initiate the wowjs
     new WOW().init();
-
 
     // Sticky Navbar
     $(window).scroll(function () {
@@ -28,7 +26,6 @@
             $('.sticky-top .container').addClass('shadow-sm').css('max-width', '100%');
         }
     });
-
 
     // Hero Header carousel
     $(".header-carousel").owlCarousel({
@@ -46,8 +43,6 @@
         ]
     });
 
-
-
     // Project carousel
     $(".project-carousel").owlCarousel({
         autoplay: true,
@@ -57,31 +52,17 @@
         loop: true,
         margin: 25,
         nav : false,
-        navText : [
-            '<i class="bi bi-arrow-left"></i>',
-            '<i class="bi bi-arrow-right"></i>'
-        ],
         responsiveClass: true,
         responsive: {
-            0:{
-                items:1
-            },
-            576:{
-                items:1
-            },
-            768:{
-                items:2
-            },
-            992:{
-                items:2
-            },
-            1200:{
-                items:2
-            }
+            0: { items: 1 },
+            576: { items: 1 },
+            768: { items: 2 },
+            992: { items: 2 },
+            1200: { items: 2 }
         }
     });
 
-    // testimonial carousel
+    // Testimonial carousel
     $(".testimonial-carousel").owlCarousel({
         autoplay: true,
         smartSpeed: 1500,
@@ -90,30 +71,15 @@
         loop: true,
         margin: 25,
         nav : false,
-        navText : [
-            '<i class="bi bi-arrow-left"></i>',
-            '<i class="bi bi-arrow-right"></i>'
-        ],
         responsiveClass: true,
         responsive: {
-            0:{
-                items:1
-            },
-            576:{
-                items:1
-            },
-            768:{
-                items:2
-            },
-            992:{
-                items:2
-            },
-            1200:{
-                items:2
-            }
+            0: { items: 1 },
+            576: { items: 1 },
+            768: { items: 2 },
+            992: { items: 2 },
+            1200: { items: 2 }
         }
     });
-
 
     // Facts counter
     $('[data-toggle="counter-up"]').counterUp({
@@ -121,33 +87,53 @@
         time: 2000
     });
 
-
-    
-   // Back to top button
-   $(window).scroll(function () {
-    if ($(this).scrollTop() > 300) {
-        $('.back-to-top').fadeIn('slow');
-    } else {
-        $('.back-to-top').fadeOut('slow');
-    }
+    // Back to top button
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 300) {
+            $('.back-to-top').fadeIn('slow');
+        } else {
+            $('.back-to-top').fadeOut('slow');
+        }
     });
+
     $('.back-to-top').click(function () {
         $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
         return false;
     });
 
+    // Show More Services Button
     document.addEventListener("DOMContentLoaded", function () {
-    var showMoreBtn = document.getElementById("showMoreBtn");
-    var moreServices = document.getElementById("more-services");
+        var showMoreBtn = document.getElementById("showMoreBtn");
+        var moreServices = document.getElementById("more-services");
 
-    if (showMoreBtn && moreServices) {
-        showMoreBtn.addEventListener("click", function (event) {
-            event.preventDefault();
-            moreServices.style.display = "flex";
-            this.style.display = "none";
+        if (showMoreBtn && moreServices) {
+            showMoreBtn.addEventListener("click", function (event) {
+                event.preventDefault();
+                moreServices.style.display = "flex";
+                this.style.display = "none";
+            });
+        }
+    });
+
+    // FAQ Accordion Script
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', function () {
+                const answer = this.nextElementSibling;
+                const icon = this.querySelector('.faq-icon');
+
+                if (answer.style.display === "block") {
+                    answer.style.display = "none";
+                    icon.textContent = "+";
+                } else {
+                    document.querySelectorAll('.faq-answer').forEach(ans => ans.style.display = "none");
+                    document.querySelectorAll('.faq-icon').forEach(ic => ic.textContent = "+");
+
+                    answer.style.display = "block";
+                    icon.textContent = "−";
+                }
+            });
         });
-    }
-});
+    });
 
 })(jQuery);
-
