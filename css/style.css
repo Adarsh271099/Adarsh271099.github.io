@@ -1819,10 +1819,13 @@ input:checked + .slider:before {
 /*** Footer Start ***/
 .footer {
     background: var(--bs-dark);
+    padding-bottom: 10px !important; /* Reduce bottom padding */
+    margin-bottom: 0; /* Ensure no extra space */
 }
+
 .footer .footer-item a {
     line-height: 35px;
-    color: var(--bs-body);
+    color: var(--bs-body); /* Bootstrap default body color */
     transition: 0.5s;
 }
 
@@ -1830,25 +1833,24 @@ input:checked + .slider:before {
     line-height: 35px;
 }
 
+.footer .container {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
 .footer .footer-item a:hover {
     letter-spacing: 1px;
     color: var(--bs-primary);
 }
 
-.footer .footer-item-post a {
-    transition: 0.5s;
-}
-
-.footer .footer-item-post a:hover {
-    color: var(--bs-primary) !important;
-}
-
+.footer .footer-item-post a,
 .footer .footer-item-post .footer-btn a {
     transition: 0.5s;
 }
 
+.footer .footer-item-post a:hover,
 .footer .footer-item-post .footer-btn a:hover {
-    color: var(--bs-dark);
+    color: var(--bs-primary) !important;
 }
 
 .footer .footer-item {
@@ -1857,7 +1859,85 @@ input:checked + .slider:before {
     align-items: flex-start;
 }
 
+/* Adjusting column widths */
+.footer .col-md-6.col-lg-3:first-child { width: 23%; } /* Services Column */
+.footer .col-md-6.col-lg-2 { width: 20%; } /* Explore Column (Increased) */
+.footer .col-md-6.col-lg-4 { width: 30%; } /* Contact Info Column */
+.footer .col-md-6.col-lg-3:last-child { width: 23%; } /* Popular Post Column */
+
+.footer .copyright {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8); /* Slightly lighter white */
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+/*** Mobile Optimization - Keep 2 Columns on Mobile ***/
+@media (max-width: 768px) {
+    .footer .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .footer .col-md-6 {
+        width: 48% !important; /* Keep 2 columns side by side */
+        margin-bottom: 20px;
+    }
+
+    /* Ensure last two columns are also side by side */
+    .footer .col-md-6:last-child,
+    .footer .col-md-6:nth-last-child(2) {
+        width: 48% !important;
+        text-align: left;
+    }
+
+    /* Hide signup button in the 4th column */
+    .footer .footer-item-post .footer-btn {
+        display: none;
+    }
+
+    /* Show the signup button at the bottom */
+    .footer .footer-signup {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .footer h4 {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+
+    .footer a {
+        font-size: 13px;
+        line-height: 24px;
+    }
+
+    .footer .footer-item,
+    .footer .footer-item-post {
+        align-items: flex-start;
+    }
+
+    .footer .footer-signup a {
+        padding: 8px 16px;
+        font-size: 14px;
+        background: var(--bs-primary);
+        color: white;
+        border-radius: 5px;
+        display: inline-block;
+        text-decoration: none;
+    }
+
+    .footer .copyright {
+        font-size: 12px;
+        margin-top: 10px;
+    }
+}
+
 /*** Footer End ***/
+
 
 #more-services {
     display: flex;
