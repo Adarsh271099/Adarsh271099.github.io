@@ -136,4 +136,27 @@
         });
     });
 
+    document.addEventListener("DOMContentLoaded", function () {
+        var acc = document.getElementsByClassName("accordion");
+
+        for (var i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                var isActive = this.classList.contains("active");
+
+                // Close all panels
+                var allAccordions = document.getElementsByClassName("accordion");
+                for (var j = 0; j < allAccordions.length; j++) {
+                    allAccordions[j].classList.remove("active");
+                    allAccordions[j].nextElementSibling.style.display = "none";
+                }
+
+                // Toggle the clicked panel only if it was not already open
+                if (!isActive) {
+                    this.classList.add("active");
+                    this.nextElementSibling.style.display = "block";
+                }
+            });
+        }
+    });
+
 })(jQuery);

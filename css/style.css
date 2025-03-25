@@ -2307,3 +2307,250 @@ input:checked + .slider:before {
 .cta-sebi-btn:hover {
     background: #0056b3;
 }
+
+/* STOCK MARKET BASICS */
+#stock-market-basics {
+    background: #f8f9fa; /* Light background for a clean look */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 20px auto;
+    font-family: 'Arial', sans-serif;
+}
+
+#stock-market-basics h2 {
+    color: #2c3e50;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#stock-market-basics h3 {
+    color: #34495e;
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+#stock-market-basics p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+#stock-market-basics ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+#stock-market-basics ul li {
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    #stock-market-basics {
+        padding: 15px;
+    }
+
+    #stock-market-basics h2 {
+        font-size: 22px;
+    }
+
+    #stock-market-basics h3 {
+        font-size: 18px;
+    }
+
+    #stock-market-basics p,
+    #stock-market-basics ul li {
+        font-size: 14px;
+    }
+}
+
+
+
+/*for basics accordion*/
+
+
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Heading Styles */
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 34px;
+}
+
+h2 {
+    text-align: center;
+    color: #555;
+    font-size: 22px;
+    margin-bottom: 1px;
+}
+
+
+@media (min-width: 768px) and (max-width: 1440px) {
+    h1 {
+        text-align: left;
+        margin-left: 70px; /* H1 - 20px */
+    }
+    h2 {
+        text-align: left;
+        margin-left: 140px; /* H2 - 50px */
+    }
+}
+
+/* Accordion Button Styles */
+.accordion {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    padding: 14px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.accordion:hover {
+    background-color: #0056b3;
+}
+
+/* Arrow Icon */
+.accordion:after {
+    content: '\25B6'; /* Unicode right arrow (▶) */
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+.accordion.active:after {
+    content: "\25BC"; /* Unicode down arrow (▼) */
+}
+
+/* Panel Styles */
+.panel {
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 5px;
+}
+
+.panel ul {
+    list-style-type: none;
+    padding: 10px;
+    margin: 0;
+}
+
+.panel ul li {
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+    color: #333;
+}
+
+.panel ul li:last-child {
+    border-bottom: none;
+}
+
+/* Flex container for accordion & video */
+.content-container {
+    display: flex;
+    flex-direction: row; /* Side by side on larger screens */
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Left side: Accordion */
+.accordion-container {
+    width: 35%; /* Occupies 35% on larger screens */
+    margin: 20px 0 20px 20px;
+}
+
+/* Right side: Video */
+.video-container {
+    width: 60%; /* Takes remaining space */
+    aspect-ratio: 16 / 9; /* Ensures correct aspect ratio */
+    border-radius: 15px; /* Curved edges */
+    overflow: hidden; /* Ensures rounded corners */
+}
+
+/* If using an iframe for YouTube */
+.video-container iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px; /* Curved edges */
+}
+
+/* Responsive Design */
+@media (max-width: 767px) {
+    .content-container {
+        flex-direction: column; /* Stack accordion and video on mobile */
+    }
+
+    .accordion-container {
+        width: 100%; /* Full width */
+        max-width: 90%; /* Keep spacing */
+        margin: 20px auto; /* Center it */
+        padding: 0 5%; /* Equal padding */
+    }
+
+    .video-container {
+        width: 100%; /* Video moves below accordion */
+        margin-top: 20px;
+    }
+}
+
+/* Adjust font size for mobile devices */
+@media (max-width: 600px) {
+    .accordion {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .panel ul li {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 767px) {
+    .accordion {
+        font-size: 13px;
+        padding: 10px 10px;
+    }
+
+    .panel ul li {
+        font-size: 11px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+}
+
+@media (min-width: 768px) {
+    .video-container {
+        margin-top: 25px; /* Adjust spacing between title and video */
+    }
+}
+
