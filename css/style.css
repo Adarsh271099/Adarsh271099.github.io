@@ -121,7 +121,7 @@
 
 @media (max-width: 768px) {
     .topbar {
-        display: none;    
+        display: none;
     }
 }
 /*** Topbar End ***/
@@ -149,7 +149,7 @@
     content: "";
     width: 0;
     height: 0;
-    border: 0px solid var(--bs-primary);
+    border: 0 solid var(--bs-primary);
     transition: 0.5s;
 }
 
@@ -180,7 +180,7 @@
 .navbar .dropdown-toggle::after {
     border: none;
     content: "\f107" !important;
-    font-family: "Font Awesome 5 Free";
+    font-family: "Font Awesome 5 Free", serif;
     font-weight: 600;
     vertical-align: middle;
 }
@@ -191,7 +191,7 @@
         visibility: hidden;
         top: 100%;
         transform: rotateX(-75deg);
-        transform-origin: 0% 0%;
+        transform-origin: 0 0;
         border: 0;
         border-radius: 10px;
         margin-top: 20px !important;
@@ -344,9 +344,9 @@
 }
 
 @keyframes RotateMoveRight {
-    0%   {left: 0px;}
+    0%   {left: 0;}
     50%   {left: 70px;}
-    100%  {left: 0px;}
+    100%  {left: 0;}
 }
 
 .header-carousel .header-carousel-item::before {
@@ -502,7 +502,7 @@
     background: white;
     padding: 25px;
     border-radius: 10px;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: transform 0.3s ease-in-out;
     width: 300px;
@@ -739,7 +739,7 @@
     padding: 20px;
     width: 100%;
     max-width: 400px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out;
 }
 
@@ -799,7 +799,7 @@
     padding: 20px;
     width: 70%;
     margin: 15px 0;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out;
 }
 .approach-step:hover {
@@ -955,7 +955,7 @@
     color: #0B1C39; /* Dark text for readability */
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     text-align: center;
     scroll-snap-align: start;
     transition: transform 0.3s ease-in-out;
@@ -964,7 +964,7 @@
 
 .feature-card:hover {
     transform: scale(1.05);
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .feature-card h3 {
@@ -1085,7 +1085,7 @@ input:checked + .slider:before {
     color: #0B1C39;
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     text-align: left;
     width: 300px;
     transition: transform 0.3s ease-in-out;
@@ -1186,7 +1186,7 @@ input:checked + .slider:before {
     background: #FFF4D6; /* Soft yellowish background */
     color: #333; /* Dark text for readability */
     border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .maintenance-container h1 {
@@ -1323,7 +1323,7 @@ input:checked + .slider:before {
     position: absolute;
     width: 500px;
     height: 1200px;
-    top: 0px;
+    top: 0;
     left: 0;
     margin-left: 30px;
     transform: rotate(-30deg);
@@ -2024,7 +2024,7 @@ input:checked + .slider:before {
     background: white;
     padding: 15px;
     border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: left; /* Align text for better readability */
     scroll-snap-align: start;
     display: flex;
@@ -2081,7 +2081,7 @@ input:checked + .slider:before {
     width: 100%;
     border-collapse: collapse;
     background: white;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border: 1px solid #ccc; /* Outer border */
 }
 
@@ -2141,7 +2141,7 @@ input:checked + .slider:before {
     margin-bottom: 10px;
     border-radius: 5px;
     overflow: hidden;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .faq-question {
@@ -2183,13 +2183,13 @@ input:checked + .slider:before {
     border-radius: 25px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    box-shadow: 0px 4px 10px rgba(0, 123, 255, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
 }
 
 .faq-more-btn:hover {
     background: linear-gradient(135deg, #0056b3, #004094);
     transform: scale(1.05);
-    box-shadow: 0px 6px 15px rgba(0, 123, 255, 0.5);
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.5);
 }
 
 .sebi-disclaimer-box {
@@ -2265,7 +2265,7 @@ input:checked + .slider:before {
     background: #f9f9f9;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 20px auto;
     max-width: 600px;
 }
