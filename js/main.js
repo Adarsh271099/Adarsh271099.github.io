@@ -135,28 +135,30 @@
             });
         });
     });
-
     document.addEventListener("DOMContentLoaded", function () {
-        var acc = document.getElementsByClassName("accordion");
+        const accordionContainer = document.querySelector(".accordion-basics");
 
-        for (var i = 0; i < acc.length; i++) {
-            acc[i].addEventListener("click", function () {
-                var isActive = this.classList.contains("active");
+        if (accordionContainer) {
+            const accordions = accordionContainer.querySelectorAll(".accordion");
 
-                // Close all panels
-                var allAccordions = document.getElementsByClassName("accordion");
-                for (var j = 0; j < allAccordions.length; j++) {
-                    allAccordions[j].classList.remove("active");
-                    allAccordions[j].nextElementSibling.style.display = "none";
-                }
+            accordions.forEach((accordion) => {
+                accordion.addEventListener("click", function () {
+                    // Close all other panels within this specific accordion group
+                    accordions.forEach((acc) => {
+                        if (acc !== this) {
+                            acc.classList.remove("active");
+                            acc.nextElementSibling.classList.remove("show");
+                        }
+                    });
 
-                // Toggle the clicked panel only if it was not already open
-                if (!isActive) {
-                    this.classList.add("active");
-                    this.nextElementSibling.style.display = "block";
-                }
+                    // Toggle the clicked accordion
+                    this.classList.toggle("active");
+                    const panel = this.nextElementSibling;
+                    panel.classList.toggle("show");
+                });
             });
         }
     });
+
 
 })(jQuery);

@@ -2373,184 +2373,195 @@ input:checked + .slider:before {
 
 
 /*for basics accordion*/
+/* Heading Container */
+#heading-container-basics-sm {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
 
+/* Left Section */
+.left-heading {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers content horizontally */
+    text-align: center; /* Ensures text is centered */
+}
 
+/* Right Section */
+.right-heading {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers content horizontally */
+    text-align: center; /* Ensures text is centered */
+}
+
+/* Responsive Design - Move Right Heading Below */
+@media (max-width: 768px) {
+    #heading-container-basics-sm {
+        flex-direction: column;
+    }
+
+    .left-heading {
+        width: 100%;
+        text-align: center;
+    }
+
+    .right-heading {
+        display: none; /* Hides the right heading on mobile */
+    }
+}
 
 /* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    padding: 0;
-    background-color: #f4f4f4;
+.accordion-basics {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align to the left */
+    margin-left: 10px;
 }
 
-/* Heading Styles */
-h1 {
-    text-align: center;
-    color: #333;
-    font-size: 34px;
-}
-
-h2 {
-    text-align: center;
-    color: #555;
-    font-size: 22px;
-    margin-bottom: 1px;
-}
-
-
-@media (min-width: 768px) and (max-width: 1440px) {
-    h1 {
-        text-align: left;
-        margin-left: 70px; /* H1 - 20px */
-    }
-    h2 {
-        text-align: left;
-        margin-left: 140px; /* H2 - 50px */
-    }
-}
-
-/* Accordion Button Styles */
-.accordion {
+/* Default styles for all accordions */
+.accordion-basics .accordion {
     background-color: #007bff;
     color: white;
     cursor: pointer;
-    padding: 14px;
-    width: 100%;
-    border: none;
+    padding: 10px;
+    width: 100%; /* Default full width for mobile */
     text-align: left;
+    border: none;
     outline: none;
     font-size: 18px;
-    transition: background-color 0.3s ease;
+    font-weight: bold;
+    transition: 0.3s;
     border-radius: 5px;
-    margin-top: 5px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
+    margin: 4px; /* Default margin */
+    position: relative;
 }
 
-.accordion:hover {
+/* Add hover effect */
+.accordion-basics .accordion:hover {
     background-color: #0056b3;
 }
 
-/* Arrow Icon */
-.accordion:after {
-    content: '\25B6'; /* Unicode right arrow (▶) */
-    font-size: 18px;
-    transition: transform 0.3s ease;
+/* Active button style */
+.accordion-basics .accordion.active {
+    background-color: #0056b3;
 }
 
-.accordion.active:after {
-    content: "\25BC"; /* Unicode down arrow (▼) */
-}
-
-/* Panel Styles */
-.panel {
-    padding: 0 18px;
-    display: none;
-    background-color: white;
+/* Panel Styling */
+.accordion-basics .panel {
+    display: none; /* Hidden by default */
+    background-color: #f9f9f9;
+    padding: 15px;
     overflow: hidden;
+    border-left: 3px solid #007bff;
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     margin-bottom: 5px;
 }
 
-.panel ul {
-    list-style-type: none;
-    padding: 10px;
-    margin: 0;
+/* Smooth transition for the panel */
+.accordion-basics .panel.show {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
 }
 
-.panel ul li {
-    padding: 8px 0;
-    border-bottom: 1px solid #ddd;
-    font-size: 16px;
-    color: #333;
+/* Arrow Icon (Default Closed) */
+.accordion-basics .accordion::after {
+    content: "▼";
+    font-size: 14px;
+    transition: transform 0.3s ease;
 }
 
-.panel ul li:last-child {
-    border-bottom: none;
+/* Rotate arrow when accordion is open */
+.accordion-basics .accordion.active::after {
+    transform: rotate(180deg);
 }
 
-/* Flex container for accordion & video */
+/* Laptop View */
+@media (min-width: 1024px) {
+    .accordion-basics {
+        width: 35%; /* 30% of total screen, aligned to the left */
+        margin-left: 10px; /* Keep a small left margin */
+        margin-right: 0; /* No right margin */
+    }
+
+    .accordion-basics .accordion {
+        width: 100%; /* Full width within the 30% container */
+    }
+}
+
+/* Mobile View */
+@media (max-width: 1023px) {
+    .accordion-basics {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .accordion-basics .accordion {
+        width: calc(100% - 20px); /* Full width minus margin */
+        margin-left: 0;
+        margin-right: 10px;
+    }
+}
 .content-container {
     display: flex;
-    flex-direction: row; /* Side by side on larger screens */
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 20px;
+    flex-direction: column; /* Default for mobile */
+    align-items: center;
+    padding: 10px;
 }
 
-/* Left side: Accordion */
-.accordion-container {
-    width: 35%; /* Occupies 35% on larger screens */
-    margin: 20px 0 20px 20px;
+/* Accordion container */
+.accordion-container-basics-sm {
+    width: 100%;
+    max-width: 600px; /* Ensuring it's not too wide on mobile */
 }
 
-/* Right side: Video */
+/* Video container */
 .video-container {
-    width: 60%; /* Takes remaining space */
-    aspect-ratio: 16 / 9; /* Ensures correct aspect ratio */
-    border-radius: 15px; /* Curved edges */
-    overflow: hidden; /* Ensures rounded corners */
+    width: 100%;
+    max-width: 600px;
+    margin-top: 20px; /* Space between accordion and video */
+    border-radius: 15px;
+    overflow: hidden;
+    justify-content: center;
 }
 
-/* If using an iframe for YouTube */
+/* Responsive video */
 .video-container iframe {
     width: 100%;
-    height: 100%;
-    border-radius: 15px; /* Curved edges */
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border-radius: 15px;
 }
 
-/* Responsive Design */
-@media (max-width: 767px) {
+/* Laptop View */
+@media (min-width: 1024px) {
     .content-container {
-        flex-direction: column; /* Stack accordion and video on mobile */
+        flex-direction: row; /* Side by side layout */
+        justify-content: flex-start;
+        align-items: flex-start;
     }
 
-    .accordion-container {
-        width: 100%; /* Full width */
-        max-width: 90%; /* Keep spacing */
-        margin: 20px auto; /* Center it */
-        padding: 0 5%; /* Equal padding */
+    .accordion-container-basics-sm {
+        width: 35%; /* Takes 35% of space */
+        margin-right: 20px; /* Space between accordion and video */
     }
 
     .video-container {
-        width: 100%; /* Video moves below accordion */
-        margin-top: 20px;
-    }
-}
-
-/* Adjust font size for mobile devices */
-@media (max-width: 600px) {
-    .accordion {
-        font-size: 16px;
-        padding: 12px;
+        width: 65%; /* Takes 55% of the available space */
+        max-width: none;
+        margin-top: 0;
+        display: flex;
+        justify-content: center; /* Centers the iframe horizontally */
+        align-items: center; /* Centers the iframe vertically (if needed) */
+        padding: 20px 20px;
     }
 
-    .panel ul li {
-        font-size: 14px;
-    }
-}
-
-@media (max-width: 767px) {
-    .accordion {
-        font-size: 13px;
-        padding: 10px 10px;
-    }
-
-    .panel ul li {
-        font-size: 11px;
-    }
-
-    h1 {
-        font-size: 22px;
-    }
-}
-
-@media (min-width: 768px) {
-    .video-container {
-        margin-top: 25px; /* Adjust spacing between title and video */
-    }
 }
 
