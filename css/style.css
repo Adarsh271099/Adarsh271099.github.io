@@ -2589,3 +2589,325 @@ input:checked + .slider:before {
         width: 100%; /* Full width on mobile */
     }
 }
+ /*for basics of sm who should take*/
+
+#who-should-take {
+    margin: 50px auto;
+    padding: 40px 20px;
+    text-align: center;
+    background: #ffffff; /* Clean white background */
+    color: #333;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    max-width: 900px;
+    border-left: 6px solid #27ae60; /* Adds a modern green accent */
+    transition: 0.3s ease-in-out;
+}
+
+#who-should-take:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Slight elevation effect */
+}
+
+#who-should-take h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #27ae60; /* Green to match the left border */
+}
+
+#who-should-take p {
+    font-size: 18px;
+    margin-bottom: 25px;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+#who-should-take ul {
+    list-style: none;
+    padding: 0;
+}
+
+#who-should-take li {
+    font-size: 18px;
+    padding: 12px 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-weight: bold;
+    background: #f9f9f9; /* Soft grey background */
+    border-radius: 8px;
+    margin: 10px auto;
+    max-width: 700px;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+}
+
+#who-should-take li:hover {
+    background: #27ae60;
+    color: white;
+    transform: translateY(-3px); /* Smooth lift effect */
+}
+
+#who-should-take li::before {
+    content: "✅"; /* Professional checkmark */
+    font-size: 22px;
+    margin-right: 15px;
+    color: #27ae60;
+    transition: 0.3s;
+}
+
+#who-should-take li:hover::before {
+    color: white;
+}
+
+/* 📱 Mobile Optimization */
+@media (max-width: 768px) {
+    #who-should-take {
+        padding: 30px 15px;
+        border-left: 4px solid #27ae60;
+    }
+
+    #who-should-take h2 {
+        font-size: 22px;
+    }
+
+    #who-should-take p {
+        font-size: 16px;
+    }
+
+    #who-should-take li {
+        font-size: 16px;
+        padding: 10px 15px;
+        max-width: 100%; /* Makes list items fit smaller screens */
+    }
+}
+
+/*benefits for sm basics*/
+
+.benefits-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.benefits-subtext {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.benefits-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    text-align: center;
+    padding: 20px;
+}
+
+.benefit-item {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.benefit-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.benefit-icon {
+    font-size: 50px;
+    color: #ff9800; /* Orange */
+    margin-bottom: 15px;
+    transition: color 0.3s ease;
+}
+
+.benefit-item:hover .benefit-icon {
+    color: #e65100; /* Darker Orange */
+}
+
+/* 📱 Mobile Optimization */
+@media (max-width: 768px) {
+    .benefits-container {
+        grid-template-columns: 1fr; /* 1 per row on small screens */
+    }
+
+    .benefit-item {
+        padding: 25px;
+        margin-bottom: 15px;
+    }
+}
+
+/*pricing*/
+
+.pricing-basics-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.pricing-basics-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Spacing between the boxes */
+    flex-wrap: wrap; /* Ensures mobile responsiveness */
+    padding: 20px;
+}
+
+.pricing-basics-card {
+    background: linear-gradient(135deg, #ff9800, #e65100);
+    color: #fff;
+    text-align: center;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    flex: 1;
+    min-width: 250px; /* Ensures responsiveness */
+}
+
+.pricing-basics-price {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.pricing-basics-validity {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.pricing-basics-btn {
+    background: #fff;
+    color: #e65100;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.pricing-basics-btn:hover {
+    background: #000;
+    color: #fff;
+}
+
+/* 📱 Mobile Optimization */
+@media (max-width: 768px) {
+    .pricing-basics-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pricing-basics-card {
+        max-width: 90%;
+        padding: 25px;
+    }
+
+    .pricing-basics-price {
+        font-size: 2rem;
+    }
+
+    .pricing-basics-btn {
+        padding: 10px 15px;
+        font-size: 1rem;
+    }
+}
+
+/* FAQ Section Styling */
+#faq-stock-market-basics {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+#faq-stock-market-basics h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.faq-stock-market-basics-item {
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+}
+
+.faq-stock-market-basics-item h3 {
+    font-size: 18px;
+    cursor: pointer;
+    margin: 0;
+    color: #007BFF;
+}
+
+.faq-stock-market-basics-item p {
+    display: none;
+    font-size: 16px;
+    color: #555;
+    margin-top: 10px;
+    line-height: 1.5;
+}
+
+/* Expand/Collapse Effect */
+.faq-stock-market-basics-item.active p {
+    display: block;
+}
+
+.faq-stock-market-basics-item h3::after {
+    content: ' ▼';
+    font-size: 14px;
+}
+
+.faq-stock-market-basics-item.active h3::after {
+    content: ' ▲';
+}
+/* Common Styling for Terms & Disclaimer Sections */
+.terms-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.terms-container h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.terms-container p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.terms-container a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+}
+
+.terms-container a:hover {
+    background-color: #0056b3;
+}

@@ -159,6 +159,24 @@
             });
         }
     });
+    document.addEventListener("DOMContentLoaded", function () {
+        const faqItems = document.querySelectorAll(".faq-stock-market-basics-item h3");
+
+        faqItems.forEach(item => {
+            item.addEventListener("click", function () {
+                const parent = this.parentElement;
+                parent.classList.toggle("active");
+
+                // Close other open items
+                document.querySelectorAll(".faq-stock-market-basics-item").forEach(faq => {
+                    if (faq !== parent) {
+                        faq.classList.remove("active");
+                    }
+                });
+            });
+        });
+    });
+
 
 
 })(jQuery);
