@@ -2938,3 +2938,161 @@ input:checked + .slider:before {
     color: #666;
     font-size: 16px;
 }
+
+/* === Harika About Section === */
+.harika-about-section {
+    padding: 80px 20px;
+    background-color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+}
+
+.harika-about-section .container {
+    max-width: 1140px;
+    margin: auto;
+}
+
+.harika-image-box img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.harika-text h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.harika-text .line-yellow {
+    width: 70px;
+    height: 3px;
+    background-color: #f39c12;
+    margin: 10px 0 20px;
+}
+
+.harika-text .subtitle {
+    font-size: 16px;
+    color: #888;
+    margin-bottom: 15px;
+}
+
+.harika-text .about-description {
+    font-size: 17px;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+/* Accordion Styling (if not using Bootstrap default) */
+.accordion-button {
+    background-color: #f8f8f8;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #f39c12;
+    color: #fff;
+}
+
+.accordion-body {
+    font-size: 16px;
+    color: #444;
+    background-color: #fff;
+}
+
+/* === Harika Pricing Section === */
+.harika-pricing-section {
+    padding: 80px 20px;
+    background-color: #f9f9f9;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.harika-pricing-section .section-title {
+    margin-bottom: 50px;
+}
+
+.harika-pricing-section .section-title h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.harika-pricing-section .line-yellow {
+    width: 80px;
+    height: 3px;
+    background-color: #f39c12;
+    margin: 15px auto;
+}
+
+.harika-pricing-section .subtitle {
+    font-size: 18px;
+    color: #777;
+}
+
+.pricing-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+}
+
+.pricing-card:hover {
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+}
+
+.pricing-card.active {
+    border: 2px solid #f39c12;
+}
+
+.pricing-card h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.pricing-card .price {
+    font-size: 28px;
+    font-weight: 700;
+    color: #f39c12;
+    margin-bottom: 20px;
+}
+
+.pricing-card .price span {
+    font-size: 14px;
+    color: #999;
+    display: block;
+}
+
+.pricing-card ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 25px;
+}
+
+.pricing-card ul li {
+    font-size: 16px;
+    color: #444;
+    padding: 8px 0;
+    border-bottom: 1px dashed #eee;
+}
+
+.pricing-card .btn-subscribe {
+    background-color: #f39c12;
+    color: #fff;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s ease;
+}
+
+.pricing-card .btn-subscribe:hover {
+    background-color: #e67e22;
+}
