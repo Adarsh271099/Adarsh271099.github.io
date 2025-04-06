@@ -177,6 +177,45 @@
         });
     });
 
+    // Pricing Toggle Logic for fantastic equity calls service
+    document.addEventListener("DOMContentLoaded", function () {
+        const toggleButtons = document.querySelectorAll('.toggle-btn');
+
+        const planPrices = {
+            monthly: {
+                basic: '🔥 ₹2,499/- month',
+                advanced: '🔥 ₹2,999/- month',
+                premium: '🔥 ₹3,199/- month'
+            },
+            quarterly: {
+                basic: '🔥 ₹6,499/- / 3 months',
+                advanced: '🔥 ₹7,999/- / 3 months',
+                premium: '🔥 ₹8,499/- / 3 months'
+            },
+            yearly: {
+                basic: '🔥 ₹22,999/- / year',
+                advanced: '🔥 ₹27,499/- / year',
+                premium: '🔥 ₹29,499/- / year'
+            }
+        };
+
+        toggleButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                // Remove 'active' from all buttons
+                toggleButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+
+                const selectedPlan = this.getAttribute('data-plan');
+
+                document.querySelector('.basic .new-price').textContent = planPrices[selectedPlan].basic;
+                document.querySelector('.advanced .new-price').textContent = planPrices[selectedPlan].advanced;
+                document.querySelector('.premium-plan .new-price').textContent = planPrices[selectedPlan].premium;
+            });
+        });
+    });
+
+
+
 
 
 })(jQuery);

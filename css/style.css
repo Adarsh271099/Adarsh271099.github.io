@@ -442,8 +442,8 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 50px;
-    margin: 50px 0;
+    padding: 20px;
+    margin: 30px 0;
 }
 
 .offer-column {
@@ -1236,7 +1236,7 @@ input:checked + .slider:before {
 }
 
 .new-price {
-    font-size: 28px;
+    font-size: 22px;
     font-weight: bold;
     color: #ff5722;
     background: linear-gradient(45deg, #ff9800, #ff5722);
@@ -1302,6 +1302,30 @@ input:checked + .slider:before {
     border-color: #34a853;
 }
 
+/* 👇 Added styles for fantastic-equity-pricing-toggle */
+.fantastic-equity-pricing-toggle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 12px;
+}
+
+.fantastic-equity-pricing-toggle button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #eee;
+    color: #333;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.fantastic-equity-pricing-toggle button.active {
+    background-color: #ff9800;
+    color: white;
+}
 
 /*** OPTION CALL PRICES board end***/
 /*** Single Page Hero Header Start ***/

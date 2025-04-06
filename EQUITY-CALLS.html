@@ -159,35 +159,38 @@
         <div class="offer-column">
             <h2>What We Offer</h2>
             <ul>
-                <li>✅ Regular equity trading Calls with Reasoning</li>
-                <li>✅ Risk management, all trades with STOP LOSS</li>
+                <li>✅ Clearly defined Entry Price, Stop-Loss, and Target</li>
                 <li>✅ Support & Resistance Levels and Market Trend</li>
                 <li>✅ Exclusive market research & Industry Comparison</li>
-                <li>✅ 15 min One-on-One Risk Management session</li>
+                <li>✅ Individual Risk assessment before Service</li>
+                <li>✅ Handpicked stock recommendations</li>
+                <li>✅ Positional, Swing & Momentum-Based Equity Calls</li>
             </ul>
         </div>
         <div class="offer-column">
             <h2>What is Excluded</h2>
             <ul>
-                <li>❌ No personalized investment advice</li>
-                <li>❌ No guaranteed profits or fixed returns</li>
+                <li>❌ <strong>No Intraday calls -</strong> strictly multi-day to multi-week</li>
+                <li>❌ <strong>No guaranteed profits or fixed returns</strong></li>
                 <li>❌ No portfolio management services</li>
                 <li>❌ No refunds once the subscription is active</li>
                 <li>❌ No liability for market losses</li>
+                <li>❌ <strong>No Grouped Services -</strong> Strictly individual</li>
             </ul>
         </div>
     </div>
 
-    <h2 style="text-align: center; background-color: #ffcccb; padding: 10px; border-radius: 5px; display: inline-block;">🚨 Disclaimer 🚨</h2>
-    <p style="font-weight: bold; text-align: center; margin-top: 10px;">
-        ⚠️ Stock market investments are subject to market risks. Past performance does not indicate future success. Your capital is at high risk. <br>
-        <span style="text-align: left; display: block; margin-left: 10px;">📌 My NISM certifications and SEBI registration do not guarantee any returns.</span> <br>
-        ⚡ Investing and trading involve financial risk, and you are solely responsible for your decisions. ⚡ <br>
-        ❌ <span style="color: #d32f2f;">No Guarantee of Profits.</span>
-    </p>
+    <h2 style="text-align: center; background-color: #f4b400; padding: 10px; border-radius: 5px; display: inline-block; color: #fff; margin-top: 10px; margin-bottom: 20px">🔥 Subscription Plans 🔥</h2>
 
-    <h2 style="text-align: center; background-color: #f4b400; padding: 10px; border-radius: 5px; display: inline-block; color: #fff; margin-top: 50px;">🔥 Subscription Plans 🔥</h2>
+    <!-- Toggle Buttons -->
+    <div class="fantastic-equity-pricing-toggle">
+        <button class="toggle-btn active" data-plan="monthly">Monthly</button>
+        <button class="toggle-btn" data-plan="quarterly">Quarterly</button>
+        <button class="toggle-btn" data-plan="yearly">Yearly</button>
+    </div>
 
+
+    <!-- Pricing Plans -->
     <div style="overflow-x: auto; white-space: nowrap; padding: 10px;">
         <div style="display: flex; gap: 20px; justify-content: flex-start; min-width: 900px;">
 
@@ -195,24 +198,14 @@
             <div class="plan-box basic">
                 <div>
                     <h3 class="plan-title">💰 Basic Plan</h3>
-                    <p class="old-price">₹3,999/-</p>
-                    <p class="new-price">🔥 ₹2,499/- month</p>
+                    <p class="old-price" id="basic-old">₹3,999/-</p>
+                    <p class="new-price" id="basic-new">🔥 ₹2,499/- month</p>
                     <p class="offer-text">🚀 Limited Time Discount!</p>
                     <table style="width: 100%; text-align: left;">
-                        <tr>
-                            <td>✅</td>
-                            <td>Equity Trading Calls</td>
-                        </tr>
-                        <tr>
-                            <td>✅</td>
-                            <td>Trade Execution Updates</td>
-                        </tr>
-                        <tr>
-                            <td>✅</td>
-                            <td>Stop Loss</td>
-                        </tr>
+                        <tr><td>✅</td><td>Equity Trading Calls</td></tr>
+                        <tr><td>✅</td><td>Trade Execution Updates</td></tr>
+                        <tr><td>✅</td><td>Stop Loss</td></tr>
                     </table>
-                    <p class="highlight-text"> </p>
                     <p class="no-feature">🚫 No Exclusive Research</p>
                 </div>
                 <a href="payment-page.html" class="button">🛒 Subscribe Now</a>
@@ -222,28 +215,15 @@
             <div class="plan-box advanced">
                 <div>
                     <h3 class="plan-title">🚀 Advanced Plan</h3>
-                    <p class="old-price">₹4,999/-</p>
-                    <p class="new-price">🔥 ₹2,799/- month</p>
+                    <p class="old-price" id="advanced-old">₹4,999/-</p>
+                    <p class="new-price" id="advanced-new">🔥 ₹2,999/- month</p>
                     <p class="offer-text">🎯 Best Value Deal!</p>
                     <table style="width: 100%; text-align: left;">
-                        <tr>
-                            <td>✅</td>
-                            <td>All Basic Features</td>
-                        </tr>
-                        <tr>
-                            <td>✅</td>
-                            <td>Support & Resistance Levels</td>
-                        </tr>
-                        <tr>
-                            <td>✅</td>
-                            <td>Exclusive Market Research</td>
-                        </tr>
-                        <tr>
-                            <td>✅</td>
-                            <td>Industry Comparison</td>
-                        </tr>
+                        <tr><td>✅</td><td>All Basic Features</td></tr>
+                        <tr><td>✅</td><td>Support & Resistance Levels</td></tr>
+                        <tr><td>✅</td><td>Exclusive Market Research</td></tr>
+                        <tr><td>✅</td><td>Industry Comparison</td></tr>
                     </table>
-                    <p class="highlight-text"> </p>
                     <p class="no-feature">🚫 No Personal Risk Management</p>
                 </div>
                 <a href="payment-page.html" class="button">🛒 Subscribe Now</a>
@@ -253,42 +233,36 @@
             <div class="plan-box premium-plan">
                 <div>
                     <h3 class="plan-title">👑 Premium Plan <span class="best-deal">🔥 BEST DEAL</span></h3>
-                    <p class="old-price">₹6 ,999/-</p>
-                    <p class="new-price">🔥 ₹2,999/- month</p>
+                    <p class="old-price" id="premium-old">₹6,999/-</p>
+                    <p class="new-price" id="premium-new">🔥 ₹3,199/- month</p>
                     <p class="offer-text">💎 VIP Access & Strategy</p>
                     <table style="width: 100%; text-align: left;">
-                        <tr>
-                            <td>✅</td>
-                            <td>All Advanced Features</td>
-                        </tr>
-                        <tr>
-                            <td>✅</td>
-                            <td>One-on-One Risk Management</td>
-                        </tr>
-                        <tr>
-                            <td>✅</td>
-                            <td>Priority Support</td>
-                        </tr>
-                        <tr>
-                            <td>✅</td>
-                            <td>Exclusive Trade Strategy</td>
-                        </tr>
+                        <tr><td>✅</td><td>All Advanced Features</td></tr>
+                        <tr><td>✅</td><td>One-on-One Risk Management</td></tr>
+                        <tr><td>✅</td><td>Priority Support</td></tr>
+                        <tr><td>✅</td><td>Exclusive Trade Strategy</td></tr>
                     </table>
-                    <p class="highlight-text"> </p>
                     <p class="highlight-text">🎯 Best for Serious Traders!</p>
                 </div>
                 <a href="payment-page.html" class="button">🛒 Subscribe Now</a>
             </div>
+
         </div>
     </div>
+    <h2 style="text-align: center; background-color: #ffcccb; padding: 10px; border-radius: 5px; display: inline-block; margin-top: 40px">🚨 Disclaimer 🚨</h2>
+
+    <p style="font-weight: bold; text-align: center; margin-top: 10px; margin-bottom: 30px">
+        ⚠️ Stock market investments are subject to market risks. Past performance does not indicate future success. Your capital is at high risk. <br>
+        <span style="text-align: left; display: block; margin-left: 10px;">📌 My NISM certifications and SEBI registration do not guarantee any returns.</span> <br>
+        ⚡ Investing and trading involve financial risk, and you are solely responsible for your decisions. ⚡ <br>
+        ❌ <span style="color: #d32f2f;">No Guarantee of Profits.</span>
+    </p>
 </div>
 
-<h2 style="text-align: center; margin-top: 80px">Legal & Compliance Information</h2>
-<p style="margin-left: 20px">This service operates in compliance with SEBI/NISM regulations where applicable. While our research and strategies are well-informed, we are not responsible for financial outcomes resulting from market activities.</p>
 
 <!--faq start-->
 <div class="faq-section">
-    <h2 style="text-align: center; margin-top: 50px">Frequently Asked Questions (FAQs)</h2>
+    <h2 style="text-align: center; margin-top: 0px">Frequently Asked Questions (FAQs)</h2>
 
     <div class="accordion" id="faqAccordion">
 
@@ -296,12 +270,13 @@
         <div class="accordion-item border-0 mb-4">
             <h2 class="accordion-header" id="faqOne">
                 <button class="accordion-button collapsed text-dark fs-5 fw-bold rounded-top" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                    Can I get a refund if I don’t find the service useful?
+                    How many calls I should expect in a month?
                 </button>
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="faqOne" data-bs-parent="#faqAccordion">
                 <div class="accordion-body my-2">
-                    <p>No, subscription fees are non-refundable as stated in our terms.</p>
+                    <p>The number of calls may vary based on market conditions, but on average, you can expect around 12 to 20 high-conviction Equity calls per month. Our focus is on quality over quantity, ensuring
+                        that each call is well-researched and aligned with our strategy for consistent returns.</p>
                 </div>
             </div>
         </div>
@@ -310,12 +285,14 @@
         <div class="accordion-item border-0 mb-4">
             <h2 class="accordion-header" id="faqTwo">
                 <button class="accordion-button collapsed text-dark fs-5 fw-bold rounded-top" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Can I cancel my subscription anytime?
+                    How will I receive the calls and updates?
                 </button>
             </h2>
             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="faqTwo" data-bs-parent="#faqAccordion">
                 <div class="accordion-body my-2">
-                    <p>Yes, you can cancel anytime before the next billing cycle.</p>
+                    <p>All calls and updates will be shared directly with you on WhatsApp. You'll receive timely alerts, entry/exit levels, and important follow-ups right where it's most convenient for you.
+
+                    </p>
                 </div>
             </div>
         </div>
@@ -329,7 +306,10 @@
             </h2>
             <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="faqThree" data-bs-parent="#faqAccordion">
                 <div class="accordion-body my-2">
-                    <p>No, we do not provide personalized investment advice, but we provide One-on-One risk management sessions in the Premium Plan.</p>
+                    <p>Yes, as a SEBI-registered Investment Advisor, I do provide personalized trading and investment advice based on your financial goals, risk appetite, and market conditions. Each recommendation is
+                        tailored to help you make informed decisions aligned with your unique profile.
+
+                    </p>
                 </div>
             </div>
         </div>
@@ -341,31 +321,37 @@
 
 
 <div class="terms">
-    <h2 style="margin-top: 50px; margin-left: 20px">Terms & Conditions</h2>
-    <ul>
-        <li>📌 This service is for informational purposes only.</li>
-        <li>📌 No liability is assumed for any losses incurred.</li>
-        <li>📌 Users must conduct their own research before making investment decisions.</li>
-        <li>📌 Subscription fees are non-refundable.</li>
+    <h2 style="margin-top: 50px; margin-left: 100px">Terms & Conditions – Fantastic Equity</h2>
+    <ul style="list-style: none; padding-left: 0; margin-left: 20px">
+        <li>📌 The advice and communication are intended exclusively for the registered client and must not be shared or forwarded to others.</li>
+        <li>📌 Clients must not post, publish, or circulate any content received via this service on social media, blogs, or public/private channels.</li>
+        <li>📌 The service is strictly for personal use and cannot be repackaged or resold under any other advisory, training, or financial product.</li>
+        <li>📌 Clients agree to use the information only for their own trading. Any unethical use may result in immediate termination without refund and possible legal action.</li>
+        <li>📌 All advice is time-stamped and client-specific. Unauthorized duplication or sharing can be digitally traced back to the user.</li>
+        <li>📌 Subscription payments are non-refundable, regardless of usage, market conditions, or perceived outcomes.</li>
+        <li>📌 Clients must review service details, risk disclosures, and eligibility criteria before subscribing.</li>
     </ul>
 </div>
 
+
 <div class="contact-section">
     <h2 style="margin-top: 50px; margin-left: 20px">Contact Us</h2>
-    <p style="margin-bottom: 50px; margin-left: 20px">For any queries, reach out to:
+    <p style="margin-bottom: 50px; margin-left: 20px">
+        For any queries, reach out to:
         <strong>
-            <a href="mailto:adarshmnimborkar99@gmail.com" style="text-decoration: none; color: #007bff;">
-                adarshmnimborkar99@gmail.com
+            <a href="contact.html" style="text-decoration: none; color: #007bff;">
+                Go to Contact Page
             </a>
         </strong>
     </p>
 </div>
+
 </body>
 
 <section class="terms-container">
-    <h2>Terms and Conditions & Disclaimer</h2>
-    <p>To read our detailed terms and conditions, please download the document below:</p>
-    <a href="assets/pdfs/Fantastic-Equity.pdf" download="Fantastic-Equity-Service-Details.pdf">
+    <h2>Service Information, Risk Disclosure, Terms & conditions, Diclaimer</h2>
+    <p>To read our detailed documents, please download the below pdf:</p>
+    <a href="assets/pdfs/fantastic-equity.pdf" download="Fantastic-Equity-Service-Details.pdf">
         Download PDF
     </a>
 </section>
