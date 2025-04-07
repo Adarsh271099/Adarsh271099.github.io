@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Risk Profiling</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+        .form-container {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        select, input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .submit-btn {
+            background: #007bff;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            margin-top: 20px;
+            width: 100%;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Client Risk Profiling Form</h2>
+    <form action="submit-risk-profile.php" method="POST">
+
+        <label>Name</label>
+        <input type="text" name="name" required>
+
+        <label>Age</label>
+        <input type="number" name="age" min="18" required>
+
+        <label>Occupation</label>
+        <input type="text" name="occupation" required>
+
+        <label>Annual Income</label>
+        <select name="income" required>
+            <option value="">Select</option>
+            <option value="1">Less than ₹5L</option>
+            <option value="2">₹5L - ₹15L</option>
+            <option value="3">Above ₹15L</option>
+        </select>
+
+        <label>Investment Objective</label>
+        <select name="objective" required>
+            <option value="">Select</option>
+            <option value="3">Capital Growth</option>
+            <option value="2">Balanced</option>
+            <option value="1">Capital Preservation</option>
+        </select>
+
+        <label>Reaction to Market Drop (15%)</label>
+        <select name="reaction" required>
+            <option value="">Select</option>
+            <option value="3">Buy More</option>
+            <option value="2">Hold</option>
+            <option value="1">Sell Immediately</option>
+        </select>
+
+        <label>Investment Horizon</label>
+        <select name="horizon" required>
+            <option value="">Select</option>
+            <option value="1">Less than 1 year</option>
+            <option value="2">1–3 years</option>
+            <option value="3">3–5 years</option>
+            <option value="4">More than 5 years</option>
+        </select>
+
+        <label>Percentage of Savings to Invest</label>
+        <select name="savings" required>
+            <option value="">Select</option>
+            <option value="1">Less than 25%</option>
+            <option value="2">25% – 50%</option>
+            <option value="3">More than 50%</option>
+        </select>
+
+        <label>Comfort With Volatility</label>
+        <select name="volatility" required>
+            <option value="">Select</option>
+            <option value="3">Very Comfortable</option>
+            <option value="2">Somewhat Comfortable</option>
+            <option value="1">Not Comfortable</option>
+        </select>
+
+        <button type="submit" class="submit-btn">Submit Profile</button>
+    </form>
+</div>
+
+</body>
+</html>
