@@ -214,73 +214,69 @@
         });
     });
 
-document.getElementById("riskForm").addEventListener("submit", function (e) {
-    e.preventDefault();
+    document.getElementById("riskForm").addEventListener("submit", function (e) {
+        e.preventDefault();
 
-    let total = 0;
-    let data = {};
+        let total = 0;
+        let data = {};
 
-    for (let i = 1; i <= 20; i++) {
-        const el = document.getElementById("q" + i);
-        const val = parseInt(el.value);
-        if (!isNaN(val)) {
-            total += val;
+        // Collect form data and calculate total score
+        for (let i = 1; i <= 20; i++) {
+            const val = parseInt(document.getElementById("q" + i).value);
+            if (!isNaN(val)) {
+                total += val;
+            }
+            data[`q${i}`] = document.getElementById(`q${i}`).value;
         }
-        // Save the selected label text for each question (optional: switch to el.value if you want numbers only)
-        data[`q${i}`] = el.options[el.selectedIndex].text;
-    }
 
-    // Calculate category and risk level
-    let category = "";
-    let riskCategory = "";
+        // Determine risk category
+        let category = "";
+        let riskCategory = "";
 
-    if (total >= 80) {
-        category = "Aggressive Risk Investor";
-        riskCategory = "High Risk";
-    } else if (total >= 50) {
-        category = "Moderate Risk Investor";
-        riskCategory = "Moderate Risk";
-    } else {
-        category = "Conservative Risk Investor";
-        riskCategory = "Low Risk";
-    }
+        if (total >= 80) {
+            category = "Aggressive Risk Investor";
+            riskCategory = "High Risk";
+        } else if (total >= 50) {
+            category = "Moderate Risk Investor";
+            riskCategory = "Moderate Risk";
+        } else {
+            category = "Conservative Risk Investor";
+            riskCategory = "Low Risk";
+        }
 
-    data.totalScore = total;
-    data.riskCategory = riskCategory;
+        data.riskCategory = riskCategory;
 
-    // Show result
-    const resultBox = document.querySelector(".result");
-    resultBox.style.display = "block";
-    resultBox.innerHTML = `<strong>You are a ${category}.</strong>`;
+        // Show result on the page
+        const resultBox = document.querySelector(".result");
+        resultBox.style.display = "block";
+        resultBox.innerHTML = `<strong>You are a ${category}.</strong>`;
 
-    // WhatsApp Button
-    if (!document.getElementById("waBtn")) {
-        const btn = document.createElement("button");
-        btn.textContent = "Continue on WhatsApp";
-        btn.className = "whatsapp-btn";
-        btn.id = "waBtn";
-        btn.onclick = function () {
-            const msg = encodeURIComponent(`Hi Adarsh, my risk profile is: ${category}`);
-            window.location.href = `https://wa.me/919130997271?text=${msg}`;
-        };
-        resultBox.appendChild(btn);
-    }
+        // WhatsApp Button
+        if (!document.getElementById("waBtn")) {
+            const btn = document.createElement("button");
+            btn.textContent = "Continue on WhatsApp";
+            btn.className = "whatsapp-btn";
+            btn.id = "waBtn";
+            btn.onclick = function () {
+                const msg = encodeURIComponent(`Hi Adarsh, my risk profile is: ${category}`);
+                window.location.href = `https://wa.me/919130997271?text=${msg}`;
+            };
+            resultBox.appendChild(btn);
+        }
 
-    // Log and send data to Google Sheets
-    console.log("Sending this data to Google Sheets:", data);
-    fetch("https://script.google.com/macros/s/AKfycbx658gzLCPvfRgXgjvcaghPpb-6Ye7mtPQtzxGGnRoVmZ1f2vGDnRC-eNjjX6atnviH/exec", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-    })
-    .then(res => res.text())
-    .then(response => {
-        console.log("Google Sheet Response:", response);
-    })
-    .catch(error => console.error("Error sending to Google Sheets!", error));
-});
-
+        // Send to Google Sheet
+        fetch("https://script.google.com/macros/s/AKfycbx658gzLCPvfRgXgjvcaghPpb-6Ye7mtPQtzxGGnRoVmZ1f2vGDnRC-eNjjX6atnviH/exec", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+        .then(res => res.text())
+        .then(response => {
+            console.log("Google Sheet Response:", response);
+        })
+        .catch(error => console.error("Error!", error));
+    });
 
 })(jQuery);
