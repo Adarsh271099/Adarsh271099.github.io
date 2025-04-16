@@ -214,29 +214,43 @@
         });
     });
 
-    document.getElementById("riskForm").addEventListener("submit", function (e) {
+document.getElementById("riskForm").addEventListener("submit", function (e) {
     e.preventDefault();
 
     let total = 0;
+    let data = {};
+
     for (let i = 1; i <= 20; i++) {
         const val = parseInt(document.getElementById("q" + i).value);
-        if (!isNaN(val)) total += val;
+        if (!isNaN(val)) {
+            total += val;
+        }
+        data[`q${i}`] = document.getElementById(`q${i}`).value;
     }
 
+    // Calculate both labels
     let category = "";
+    let riskCategory = "";
+
     if (total >= 80) {
         category = "Aggressive Risk Investor";
+        riskCategory = "High Risk";
     } else if (total >= 50) {
         category = "Moderate Risk Investor";
+        riskCategory = "Moderate Risk";
     } else {
         category = "Conservative Risk Investor";
+        riskCategory = "Low Risk";
     }
 
+    data.riskCategory = riskCategory;
+
+    // Show result
     const resultBox = document.querySelector(".result");
     resultBox.style.display = "block";
     resultBox.innerHTML = `<strong>You are a ${category}.</strong>`;
 
-    // Show WhatsApp button with dynamic message
+    // WhatsApp Button
     if (!document.getElementById("waBtn")) {
         const btn = document.createElement("button");
         btn.textContent = "Continue on WhatsApp";
@@ -248,8 +262,21 @@
         };
         resultBox.appendChild(btn);
     }
-});
 
+    // Google Sheet Submit
+    fetch("https://script.google.com/macros/s/AKfycbx658gzLCPvfRgXgjvcaghPpb-6Ye7mtPQtzxGGnRoVmZ1f2vGDnRC-eNjjX6atnviH/exec", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(res => res.text())
+    .then(response => {
+        console.log("Google Sheet Response:", response);
+    })
+    .catch(error => console.error("Error!", error));
+});
 
 
 
