@@ -221,14 +221,16 @@ document.getElementById("riskForm").addEventListener("submit", function (e) {
     let data = {};
 
     for (let i = 1; i <= 20; i++) {
-        const val = parseInt(document.getElementById("q" + i).value);
+        const el = document.getElementById("q" + i);
+        const val = parseInt(el.value);
         if (!isNaN(val)) {
             total += val;
         }
-        data[`q${i}`] = document.getElementById(`q${i}`).value;
+        // Save the selected label text for each question (optional: switch to el.value if you want numbers only)
+        data[`q${i}`] = el.options[el.selectedIndex].text;
     }
 
-    // Calculate both labels
+    // Calculate category and risk level
     let category = "";
     let riskCategory = "";
 
@@ -243,6 +245,7 @@ document.getElementById("riskForm").addEventListener("submit", function (e) {
         riskCategory = "Low Risk";
     }
 
+    data.totalScore = total;
     data.riskCategory = riskCategory;
 
     // Show result
@@ -263,7 +266,8 @@ document.getElementById("riskForm").addEventListener("submit", function (e) {
         resultBox.appendChild(btn);
     }
 
-    // Google Sheet Submit
+    // Log and send data to Google Sheets
+    console.log("Sending this data to Google Sheets:", data);
     fetch("https://script.google.com/macros/s/AKfycbx658gzLCPvfRgXgjvcaghPpb-6Ye7mtPQtzxGGnRoVmZ1f2vGDnRC-eNjjX6atnviH/exec", {
         method: "POST",
         headers: {
@@ -275,10 +279,8 @@ document.getElementById("riskForm").addEventListener("submit", function (e) {
     .then(response => {
         console.log("Google Sheet Response:", response);
     })
-    .catch(error => console.error("Error!", error));
-
+    .catch(error => console.error("Error sending to Google Sheets!", error));
 });
-
 
 
 })(jQuery);
