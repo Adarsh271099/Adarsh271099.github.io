@@ -214,6 +214,41 @@
         });
     });
 
+    document.getElementById("riskForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    let total = 0;
+    for (let i = 1; i <= 20; i++) {
+        const val = parseInt(document.getElementById("q" + i).value);
+        if (!isNaN(val)) total += val;
+    }
+
+    let category = "";
+    if (total >= 80) {
+        category = "Aggressive Risk Investor";
+    } else if (total >= 50) {
+        category = "Moderate Risk Investor";
+    } else {
+        category = "Conservative Risk Investor";
+    }
+
+    const resultBox = document.querySelector(".result");
+    resultBox.style.display = "block";
+    resultBox.innerHTML = `<strong>You are a ${category}.</strong>`;
+
+    // Show WhatsApp button with dynamic message
+    if (!document.getElementById("waBtn")) {
+        const btn = document.createElement("button");
+        btn.textContent = "Continue on WhatsApp";
+        btn.className = "whatsapp-btn";
+        btn.id = "waBtn";
+        btn.onclick = function () {
+            const msg = encodeURIComponent(`Hi Adarsh, my risk profile is: ${category}`);
+            window.location.href = `https://wa.me/919130997271?text=${msg}`;
+        };
+        resultBox.appendChild(btn);
+    }
+});
 
 
 
