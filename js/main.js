@@ -227,7 +227,7 @@ document.getElementById("riskForm").addEventListener("submit", function (e) {
             total += val;
         }
         // Save the selected label text for each question (optional: switch to el.value if you want numbers only)
-        data[`q${i}`] = el.value;
+        data[`q${i}`] = el.options[el.selectedIndex].text;
     }
 
     // Calculate category and risk level
