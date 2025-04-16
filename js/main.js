@@ -264,18 +264,19 @@ document.getElementById("riskForm").addEventListener("submit", function (e) {
     }
 
     // Google Sheet Submit
-    fetch("https://script.google.com/macros/s/AKfycbx658gzLCPvfRgXgjvcaghPpb-6Ye7mtPQtzxGGnRoVmZ1f2vGDnRC-eNjjX6atnviH/exec", {
+    fetch("https://script.google.com/macros/s/YOUR_DEPLOYED_SCRIPT_URL/exec", {
         method: "POST",
-        body: JSON.stringify(data),
         headers: {
-            "Content-Type": "application/json"
-        }
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
     })
     .then(res => res.text())
     .then(response => {
         console.log("Google Sheet Response:", response);
     })
     .catch(error => console.error("Error!", error));
+
 });
 
 
