@@ -264,7 +264,7 @@ document.getElementById("riskForm").addEventListener("submit", function (e) {
     }
 
     // Google Sheet Submit
-    fetch("https://script.google.com/macros/s/YOUR_DEPLOYED_SCRIPT_URL/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbx658gzLCPvfRgXgjvcaghPpb-6Ye7mtPQtzxGGnRoVmZ1f2vGDnRC-eNjjX6atnviH/exec", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
