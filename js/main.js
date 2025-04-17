@@ -214,41 +214,5 @@
         });
     });
 
-    window.onload = function () {
-      const form = document.getElementById("trialForm");
-
-      if (!form) {
-        console.error("Form with id 'trialForm' not found.");
-        return;
-      }
-
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        const data = {
-          name: document.getElementById("name").value,
-          mobile: document.getElementById("mobile").value,
-          email: document.getElementById("email").value
-        };
-
-        fetch("https://script.google.com/macros/s/AKfycbwuRKqk1povQzcDK1e83fhljpNGDeHVwrCFR0wkjtuYTlvG62tSHWP9wanK-15lqkVZ/exec", {
-          method: "POST",
-          body: JSON.stringify(data),
-          headers: {
-            "Content-Type": "application/json"
-          }
-        })
-        .then(res => res.text())
-        .then(response => {
-          console.log("Response:", response);
-          document.getElementById("result").textContent = response;
-        })
-        .catch(err => {
-          console.error("Error:", err);
-          document.getElementById("result").textContent = "Error: " + err;
-        });
-      });
-    };
-
 
 })(jQuery);
