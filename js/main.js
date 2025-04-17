@@ -214,69 +214,31 @@
         });
     });
 
-    document.getElementById("riskForm").addEventListener("submit", function (e) {
-        e.preventDefault();
+    document.getElementById("trialForm").addEventListener("submit", function (e) {
+      e.preventDefault();
 
-        let total = 0;
-        let data = {};
+      const data = {
+        name: document.getElementById("name").value,
+        mobile: document.getElementById("mobile").value,
+        email: document.getElementById("email").value
+      };
 
-        // Collect form data and calculate total score
-        for (let i = 1; i <= 20; i++) {
-            const val = parseInt(document.getElementById("q" + i).value);
-            if (!isNaN(val)) {
-                total += val;
-            }
-            data[`q${i}`] = document.getElementById(`q${i}`).value;
+      fetch("https://script.google.com/macros/s/AKfycbwuRKqk1povQzcDK1e83fhljpNGDeHVwrCFR0wkjtuYTlvG62tSHWP9wanK-15lqkVZ/exec", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json"
         }
-
-        // Determine risk category
-        let category = "";
-        let riskCategory = "";
-
-        if (total >= 80) {
-            category = "Aggressive Risk Investor";
-            riskCategory = "High Risk";
-        } else if (total >= 50) {
-            category = "Moderate Risk Investor";
-            riskCategory = "Moderate Risk";
-        } else {
-            category = "Conservative Risk Investor";
-            riskCategory = "Low Risk";
-        }
-
-        data.riskCategory = riskCategory;
-
-        // Show result on the page
-        const resultBox = document.querySelector(".result");
-        resultBox.style.display = "block";
-        resultBox.innerHTML = `<strong>You are a ${category}.</strong>`;
-
-        // WhatsApp Button
-        if (!document.getElementById("waBtn")) {
-            const btn = document.createElement("button");
-            btn.textContent = "Continue on WhatsApp";
-            btn.className = "whatsapp-btn";
-            btn.id = "waBtn";
-            btn.onclick = function () {
-                const msg = encodeURIComponent(`Hi Adarsh, my risk profile is: ${category}`);
-                window.location.href = `https://wa.me/919130997271?text=${msg}`;
-            };
-            resultBox.appendChild(btn);
-        }
-
-        // Send to Google Sheet
-        fetch("https://script.google.com/macros/s/AKfycbx658gzLCPvfRgXgjvcaghPpb-6Ye7mtPQtzxGGnRoVmZ1f2vGDnRC-eNjjX6atnviH/exec", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-        })
-        .then(res => res.text())
-        .then(response => {
-            console.log("Google Sheet Response:", response);
-        })
-        .catch(error => console.error("Error!", error));
+      })
+      .then(res => res.text())
+      .then(response => {
+        console.log("Response:", response);
+        document.getElementById("result").textContent = response;
+      })
+      .catch(err => {
+        console.error("Error:", err);
+        document.getElementById("result").textContent = "Error: " + err;
+      });
     });
 
 })(jQuery);
