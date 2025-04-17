@@ -242,6 +242,7 @@
       });
     });
 
+
 document.addEventListener('DOMContentLoaded', function() {
     const riskForm = document.getElementById('riskForm');
     const submitBtn = document.getElementById('submit-risk');
