@@ -214,5 +214,41 @@
         });
     });
 
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const mobile = document.getElementById('mobile').value;
+
+    const messageDiv = document.getElementById('message');
+    messageDiv.style.display = 'none';
+
+    // Replace with your Google Apps Script URL
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwRBTVEhJCNjDmcZuIGF8FVak7G3varwbiypjugKxcKAtHIOClrtF7-GadzPtsGG3DVbQ/exec';
+
+    fetch(scriptURL, {
+        method: 'POST',
+        body: JSON.stringify({name: name, email: email, mobile: mobile}),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        messageDiv.style.display = 'block';
+        if (response.ok) {
+            messageDiv.className = 'success';
+            messageDiv.textContent = 'Thank you! Your information has been submitted successfully.';
+            document.getElementById('contactForm').reset();
+        } else {
+            throw new Error('Network response was not ok');
+        }
+    })
+    .catch(error => {
+        messageDiv.style.display = 'block';
+        messageDiv.className = 'error';
+        messageDiv.textContent = 'Error! ' + error.message;
+    });
+});
 
 })(jQuery);
