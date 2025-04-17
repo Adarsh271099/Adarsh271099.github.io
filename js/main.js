@@ -215,37 +215,34 @@
     });
 
     document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('contactForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
+      document.getElementById('contactForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
 
-    const formData = {
-      name: document.getElementById('name').value,
-      email: document.getElementById('email').value,
-      mobile: document.getElementById('mobile').value
-    };
+        const formData = {
+          name: document.getElementById('name').value,
+          email: document.getElementById('email').value,
+          mobile: document.getElementById('mobile').value
+        };
 
-    // REPLACE THIS WITH YOUR ACTUAL DEPLOYMENT URL
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbyS3FN9JRX5R0-z-6SXAwKbKYpjemvXdckQhCz0CDfEra8NJV8Dk0hBspz9QAfabNv4Sg/exec';
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyS3FN9JRX5R0-z-6SXAwKbKYpjemvXdckQhCz0CDfEra8NJV8Dk0hBspz9QAfabNv4Sg/exec';
 
-    try {
-      const response = await fetch(scriptURL, {
-        method: 'POST',
-        body: JSON.stringify(formData),
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        mode: 'no-cors' // Important for cross-origin requests
+        try {
+          const response = await fetch(scriptURL, {
+            method: 'POST',
+            body: JSON.stringify(formData),
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            mode: 'no-cors'
+          });
+
+          alert('Form submitted successfully!');
+          document.getElementById('contactForm').reset();
+        } catch (error) {
+          console.error('Error!', error);
+          alert('Error submitting form');
+        }
       });
-
-      // Since 'no-cors' mode doesn't allow reading the response, we assume success
-      alert('Form submitted successfully!');
-      document.getElementById('contactForm').reset();
-
-    } catch (error) {
-      console.error('Error!', error);
-      alert('Error submitting form');
-    }
-  });
-});
+    });
 
 })(jQuery);
