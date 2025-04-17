@@ -227,15 +227,12 @@
         const scriptURL = 'https://script.google.com/macros/s/AKfycbyS3FN9JRX5R0-z-6SXAwKbKYpjemvXdckQhCz0CDfEra8NJV8Dk0hBspz9QAfabNv4Sg/exec';
 
         try {
-          const response = await fetch(scriptURL, {
+          await fetch(scriptURL, {
             method: 'POST',
             body: JSON.stringify(formData),
-            headers: {
-              'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             mode: 'no-cors'
           });
-
           alert('Form submitted successfully!');
           document.getElementById('contactForm').reset();
         } catch (error) {
