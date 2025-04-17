@@ -214,8 +214,9 @@
         });
     });
 
-document.getElementById('contactForm').addEventListener('submit', async function(e) {
-  e.preventDefault();
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
 
   const formData = {
     name: document.getElementById('name').value,
