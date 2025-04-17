@@ -214,40 +214,38 @@
         });
     });
 
-document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
 
-  const formData = {
-    name: document.getElementById('name').value,
-    email: document.getElementById('email').value,
-    mobile: document.getElementById('mobile').value
-  };
+    const formData = {
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      mobile: document.getElementById('mobile').value
+    };
 
-  // REPLACE THIS WITH YOUR ACTUAL DEPLOYMENT URL
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbyS3FN9JRX5R0-z-6SXAwKbKYpjemvXdckQhCz0CDfEra8NJV8Dk0hBspz9QAfabNv4Sg/exec';
+    // REPLACE THIS WITH YOUR ACTUAL DEPLOYMENT URL
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyS3FN9JRX5R0-z-6SXAwKbKYpjemvXdckQhCz0CDfEra8NJV8Dk0hBspz9QAfabNv4Sg/exec';
 
-  try {
-    const response = await fetch(scriptURL, {
-      method: 'POST',
-      body: JSON.stringify(formData),
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      mode: 'no-cors' // Important for cross-origin requests
-    });
+    try {
+      const response = await fetch(scriptURL, {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        mode: 'no-cors' // Important for cross-origin requests
+      });
 
-    // Since we use no-cors, we can't read the response directly
-    alert('Form submitted successfully!');
-    document.getElementById('contactForm').reset();
+      // Since 'no-cors' mode doesn't allow reading the response, we assume success
+      alert('Form submitted successfully!');
+      document.getElementById('contactForm').reset();
 
-    // Alternative: Open the response in a new tab
-    // window.open(scriptURL + '?payload=' + encodeURIComponent(JSON.stringify(formData)), '_blank');
-
-  } catch (error) {
-    console.error('Error!', error);
-    alert('Error submitting form');
-  }
+    } catch (error) {
+      console.error('Error!', error);
+      alert('Error submitting form');
+    }
+  });
 });
 
 })(jQuery);
