@@ -136,269 +136,306 @@
 <div class="container-fluid bg-breadcrumb">
     <div class="bg-breadcrumb-single"></div>
     <div class="container text-center py-5" style="max-width: 900px;">
-        <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">404 Pages</h4>
+        <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">RISK ASSESSMENT</h4>
         <ol class="breadcrumb justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
             <li class="breadcrumb-item"><a href="#">Pages</a></li>
-            <li class="breadcrumb-item active text-primary">404 Page</li>
+            <li class="breadcrumb-item active text-primary">RISK ASSESSMENT</li>
         </ol>
     </div>
 </div>
 <!-- Header End -->
 
+<!-- Risk Profiling Start -->
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="card shadow-sm border-0 rounded-3">
+                <div class="card-body p-5">
+                    <h3 class="text-primary mb-4">Risk Profiling Questionnaire</h3>
+                    <form id="riskForm">
+                        <!-- Personal Details -->
+                        <div class="row mb-4 border-bottom pb-3">
+                            <div class="col-md-4">
+                                <label class="form-label">Full Name*</label>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Email*</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Mobile*</label>
+                                <input type="tel" class="form-control" id="mobile" pattern="[0-9]{10}" required>
+                            </div>
+                        </div>
 
-<div class="risk-profile-css">
-    <h2>Risk Profiling Questionnaire</h2>
-    <form id="riskForm">
-        <!-- Sample Question -->
-        <!-- Q1 -->
-        <div class="question">
-        <label>1. Age Group:</label>
-        <select id="q1" name="q1" required>
-            <option value="">-- Select --</option>
-            <option value="5">Below 30</option>
-            <option value="4">30–45</option>
-            <option value="3">46–60</option>
-            <option value="1">Above 60</option>
-        </select>
+                        <!-- Risk Questions -->
+                        <div class="risk-questions">
+                            <!-- Q1 -->
+                            <div class="mb-4">
+                                <label class="form-label">1. Age Group:</label>
+                                <select class="form-select" id="q1" required>
+                                    <option value="">-- Select --</option>
+                                    <option value="5">Below 30</option>
+                                    <option value="4">30–45</option>
+                                    <option value="3">46–60</option>
+                                    <option value="1">Above 60</option>
+                                </select>
+                            </div>
+
+                            <!-- Q2 -->
+                            <div class="mb-4">
+                                <label class="form-label">2. Occupation:</label>
+                                <select class="form-select" id="q2" required>
+                                    <option value="">-- Select --</option>
+                                    <option value="5">Business Owner</option>
+                                    <option value="4">Private Sector Job</option>
+                                    <option value="3">Government Job</option>
+                                    <option value="2">Retired</option>
+                                </select>
+                            </div>
+
+                            <!-- Continue with Q3-Q20 in the same pattern -->
+                            <!-- Q3 -->
+                            <div class="mb-4">
+                                <label class="form-label">3. Annual Income:</label>
+                                <select class="form-select" id="q3" required>
+                                    <option value="">-- Select --</option>
+                                    <option value="5">₹10L+</option>
+                                    <option value="4">₹5L–₹10L</option>
+                                    <option value="3">₹2.5L–₹5L</option>
+                                    <option value="1">Below ₹2.5L</option>
+                                </select>
+                            </div>
+
+                            <!-- Q4 -->
+                            <div class="mb-4">
+                                <label class="form-label">4. Savings Rate (% of income saved):</label>
+                                <select class="form-select" id="q4" required>
+                                    <option value="">-- Select --</option>
+                                    <option value="5">Above 40%</option>
+                                    <option value="4">30–40%</option>
+                                    <option value="3">15–30%</option>
+                                    <option value="1">Less than 15%</option>
+                                </select>
+                            </div>
+
+                            <!-- Q5 -->
+                            <div class="mb-4">
+                                <label class="form-label">5. Number of Dependents:</label>
+                                <select class="form-select" id="q5" required>
+                                    <option value="">-- Select --</option>
+                                    <option value="5">0</option>
+                                    <option value="4">1</option>
+                                    <option value="3">2</option>
+                                    <option value="1">3 or more</option>
+                                </select>
+                            </div>
+
+                            <!-- Q6 -->
+                            <div class="mb-4">
+                                <label class="form-label">6. Loan/EMI Burden:</label>
+                                <select class="form-select" id="q6" required>
+                                    <option value="">-- Select --</option>
+                                    <option value="5">No EMIs</option>
+                                    <option value="4">EMI < 25% of income</option>
+                                    <option value="2">EMI 25–50%</option>
+                                    <option value="1">EMI > 50%</option>
+                                </select>
+                            </div>
+
+                            <!-- Q7 -->
+                            <div class="mb-4">
+                                <label class="form-label">7. Emergency Fund:</label>
+                                <select class="form-select" id="q7" required>
+                                    <option value="">-- Select --</option>
+                                    <option value="5">More than 12 months of expenses</option>
+                                    <option value="4">6–12 months</option>
+                                    <option value="2">3–6 months</option>
+                                    <option value="1">Less than 3 months</option>
+                                </select>
+                            </div>
+
+                            <!-- Q8 -->
+                            <div class="mb-4">
+                                <label class="form-label">8. Investment Experience:</label>
+                                <select class="form-select" id="q8" required>
+                                    <option value="">-- Select --</option>
+                                    <option value="5">Stocks & Derivatives</option>
+                                    <option value="4">Mutual Funds</option>
+                                    <option value="2">FD/PPF/Gold</option>
+                                    <option value="1">None</option>
+                                </select>
+                            </div>
+
+                            <!-- Q9 -->
+                            <div class="mb-4">
+                                <label class="form-label">9. Asset Ownership:</label>
+                                <select class="form-select" id="q9" required>
+                                    <option value="">-- Select --</option>
+                                    <option value="5">House + Land + Others</option>
+                                    <option value="4">House + Gold</option>
+                                    <option value="2">Only House</option>
+                                    <option value="1">No Assets</option>
+                                </select>
+                            </div>
+
+                            <!-- Q10 -->
+                            <div class="mb-4">
+                                <label class="form-label">10. Current Portfolio Composition:</label>
+                                <select class="form-select" id="q10" required>
+                                    <option value="">-- Select --</option>
+                                    <option value="5">High Equity + Other Assets</option>
+                                    <option value="4">Balanced Equity + Debt</option>
+                                    <option value="2">Only FD, PPF, Insurance</option>
+                                    <option value="1">No Investments Yet</option>
+                                </select>
+                            </div>
+
+                            <!-- Q11 -->
+                            <div class="mb-4">
+                                <label class="form-label">11. What is your primary investment goal?</label>
+                                <select class="form-select" id="q11" required>
+                                    <option value="">-- Select --</option>
+                                    <option value="5">Wealth Creation</option>
+                                    <option value="4">Retirement</option>
+                                    <option value="3">Child’s Education/Marriage</option>
+                                    <option value="2">Buying a House</option>
+                                    <option value="1">Regular Income</option>
+                                </select>
+                            </div>
+
+                            <!-- Q12 -->
+                            <div class="mb-4">
+                                <label class="form-label">12. Investment Time Horizon:</label>
+                                <select class="form-select" id="q12" required>
+                                    <option value="">-- Select --</option>
+                                    <option value="5">10+ Years</option>
+                                    <option value="4">5–10 Years</option>
+                                    <option value="3">3–5 Years</option>
+                                    <option value="2">1–3 Years</option>
+                                    <option value="1">Less than 1 Year</option>
+                                </select>
+                            </div>
+
+                            <!-- Q13 -->
+                            <div class="mb-4">
+                                <label class="form-label">13. How important is liquidity to you?</label>
+                                <select class="form-select" id="q13" required>
+                                    <option value="">-- Select --</option>
+                                    <option value="5">Not Important</option>
+                                    <option value="4">Can stay invested 5+ years</option>
+                                    <option value="3">Medium Importance</option>
+                                    <option value="2">Prefer partially liquid</option>
+                                    <option value="1">Need regular liquidity</option>
+                                </select>
+                            </div>
+
+                            <!-- Q14 -->
+                            <div class="mb-4">
+                                <label class="form-label">14. How do you feel about market volatility?</label>
+                                <select class="form-select" id="q14" required>
+                                    <option value="">-- Select --</option>
+                                    <option value="5">Comfortable with high volatility</option>
+                                    <option value="4">Okay with some ups and downs</option>
+                                    <option value="3">Prefer moderate risk</option>
+                                    <option value="2">Worried during downturns</option>
+                                    <option value="1">Hate volatility</option>
+                                </select>
+                            </div>
+
+                            <!-- Q15 -->
+                            <div class="mb-4">
+                                <label class="form-label">15. Have you experienced a market crash?</label>
+                                <select class="form-select" id="q15" required>
+                                    <option value="">-- Select --</option>
+                                    <option value="5">Yes, and I stayed invested</option>
+                                    <option value="4">Yes, with some panic but stayed</option>
+                                    <option value="3">Exited partially</option>
+                                    <option value="2">Exited completely</option>
+                                    <option value="1">Never invested before</option>
+                                </select>
+                            </div>
+
+                            <!-- Q16 -->
+                            <div class="mb-4">
+                                <label class="form-label">16. Are you comfortable with complex products (F&O, PMS)?</label>
+                                <select class="form-select" id="q16" required>
+                                    <option value="">-- Select --</option>
+                                    <option value="5">Very Comfortable</option>
+                                    <option value="4">Somewhat Familiar</option>
+                                    <option value="3">Heard of them</option>
+                                    <option value="2">Not Comfortable</option>
+                                    <option value="1">Don’t Understand Them</option>
+                                </select>
+                            </div>
+
+                            <!-- Q17 -->
+                            <div class="mb-4">
+                                <label class="form-label">17. How often do you review your investments?</label>
+                                <select class="form-select" id="q17" required>
+                                    <option value="">-- Select --</option>
+                                    <option value="5">Weekly</option>
+                                    <option value="4">Monthly</option>
+                                    <option value="3">Quarterly</option>
+                                    <option value="2">Yearly</option>
+                                    <option value="1">Never</option>
+                                </select>
+                            </div>
+
+                            <!-- Q18 -->
+                            <div class="mb-4">
+                                <label class="form-label">18. How do you prefer to invest?</label>
+                                <select class="form-select" id="q18" required>
+                                    <option value="">-- Select --</option>
+                                    <option value="5">On my own (DIY)</option>
+                                    <option value="4">Via Advisor</option>
+                                    <option value="3">Bank RM</option>
+                                    <option value="2">Friends/Relatives’ Suggestions</option>
+                                    <option value="1">No preference</option>
+                                </select>
+                            </div>
+
+                            <!-- Q19 -->
+                            <div class="mb-4">
+                                <label class="form-label">19. Your decision-making style:</label>
+                                <select class="form-select" id="q19" required>
+                                    <option value="">-- Select --</option>
+                                    <option value="5">Independent & Fast</option>
+                                    <option value="4">Research-based</option>
+                                    <option value="3">Need multiple opinions</option>
+                                    <option value="2">Take time to decide</option>
+                                    <option value="1">Totally dependent on others</option>
+                                </select>
+                            </div>
+
+
+                            <!-- [...] (Include all 20 questions here) -->
+                            <!-- Q20 -->
+                            <div class="mb-4">
+                                <label class="form-label">20. What will you do if your portfolio drops 20%?</label>
+                                <select class="form-select" id="q20" required>
+                                    <option value="">-- Select --</option>
+                                    <option value="5">Buy more</option>
+                                    <option value="4">Hold patiently</option>
+                                    <option value="3">Partially withdraw</option>
+                                    <option value="2">Exit all investments</option>
+                                    <option value="1">Panic and blame</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button type="submit" id="submit-risk" class="btn btn-primary btn-lg w-100 py-3">
+                            Calculate My Risk Profile
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
-
-        <!-- Q2 -->
-        <div class="question">
-        <label>2. Occupation:</label>
-        <select id="q2" name="q2" required>
-            <option value="">-- Select --</option>
-            <option value="5">Business Owner</option>
-            <option value="4">Private Sector Job</option>
-            <option value="3">Government Job</option>
-            <option value="2">Retired</option>
-        </select></div>
-
-        <!-- Q3 -->
-            <div class="question">
-        <label>3. Annual Income:</label>
-        <select id="q3" name="q3" required>
-            <option value="">-- Select --</option>
-            <option value="5">₹10L+</option>
-            <option value="4">₹5L–₹10L</option>
-            <option value="3">₹2.5L–₹5L</option>
-            <option value="1">Below ₹2.5L</option>
-        </select></div>
-
-        <!-- Q4 -->
-                <div class="question">
-        <label>4. Savings Rate (% of income saved):</label>
-        <select id="q4" name="q4" required>
-            <option value="">-- Select --</option>
-            <option value="5">Above 40%</option>
-            <option value="4">30–40%</option>
-            <option value="3">15–30%</option>
-            <option value="1">Less than 15%</option>
-        </select></div>
-
-        <!-- Q5 -->
-                    <div class="question">
-        <label>5. Number of Dependents:</label>
-        <select id="q5" name="q5" required>
-            <option value="">-- Select --</option>
-            <option value="5">0</option>
-            <option value="4">1</option>
-            <option value="3">2</option>
-            <option value="1">3 or more</option>
-        </select></div>
-
-        <!-- Q6 -->
-                        <div class="question">
-        <label>6. Loan/EMI Burden:</label>
-        <select id="q6" name="q6" required>
-            <option value="">-- Select --</option>
-            <option value="5">No EMIs</option>
-            <option value="4">EMI < 25% of income</option>
-            <option value="2">EMI 25–50%</option>
-            <option value="1">EMI > 50%</option>
-        </select></div>
-
-        <!-- Q7 -->
-        <div class="question">
-        <label>7. Emergency Fund:</label>
-        <select id="q7" name="q7" required>
-            <option value="">-- Select --</option>
-            <option value="5">More than 12 months of expenses</option>
-            <option value="4">6–12 months</option>
-            <option value="2">3–6 months</option>
-            <option value="1">Less than 3 months</option>
-        </select></div>
-
-        <!-- Q8 -->
-            <div class="question">
-        <label>8. Investment Experience:</label>
-        <select id="q8" name="q8" required>
-            <option value="">-- Select --</option>
-            <option value="5">Stocks & Derivatives</option>
-            <option value="4">Mutual Funds</option>
-            <option value="2">FD/PPF/Gold</option>
-            <option value="1">None</option>
-        </select></div>
-
-        <!-- Q9 -->
-                <div class="question">
-        <label>9. Asset Ownership:</label>
-        <select id="q9" name="q9" required>
-            <option value="">-- Select --</option>
-            <option value="5">House + Land + Others</option>
-            <option value="4">House + Gold</option>
-            <option value="2">Only House</option>
-            <option value="1">No Assets</option>
-        </select></div>
-
-        <!-- Q10 -->
-                    <div class="question">
-        <label>10. Current Portfolio Composition:</label>
-        <select id="q10" name="q10" required>
-            <option value="">-- Select --</option>
-            <option value="5">High Equity + Other Assets</option>
-            <option value="4">Balanced Equity + Debt</option>
-            <option value="2">Only FD, PPF, Insurance</option>
-            <option value="1">No Investments Yet</option>
-        </select></div>
-
-        <!-- Q11 -->
-        <div class="question">
-        <label>11. What is your primary investment goal?</label>
-        <select id="q11" name="q11" required>
-            <option value="">-- Select --</option>
-            <option value="5">Wealth Creation</option>
-            <option value="4">Retirement</option>
-            <option value="3">Child’s Education/Marriage</option>
-            <option value="2">Buying a House</option>
-            <option value="1">Regular Income</option>
-        </select></div>
-
-        <!-- Q12 -->
-            <div class="question">
-        <label>12. Investment Time Horizon:</label>
-        <select id="q12" name="q12" required>
-            <option value="">-- Select --</option>
-            <option value="5">10+ Years</option>
-            <option value="4">5–10 Years</option>
-            <option value="3">3–5 Years</option>
-            <option value="2">1–3 Years</option>
-            <option value="1">Less than 1 Year</option>
-        </select></div>
-
-        <!-- Q13 -->
-                <div class="question">
-        <label>13. How important is liquidity to you?</label>
-        <select id="q13" name="q13" required>
-            <option value="">-- Select --</option>
-            <option value="5">Not Important</option>
-            <option value="4">Can stay invested 5+ years</option>
-            <option value="3">Medium Importance</option>
-            <option value="2">Prefer partially liquid</option>
-            <option value="1">Need regular liquidity</option>
-        </select></div>
-
-        <!-- Q14 -->
-                    <div class="question">
-        <label>14. How do you feel about market volatility?</label>
-        <select id="q14" name="q14" required>
-            <option value="">-- Select --</option>
-            <option value="5">Comfortable with high volatility</option>
-            <option value="4">Okay with some ups and downs</option>
-            <option value="3">Prefer moderate risk</option>
-            <option value="2">Worried during downturns</option>
-            <option value="1">Hate volatility</option>
-        </select></div>
-
-        <!-- Q15 -->
-                        <div class="question">
-        <label>15. Have you experienced a market crash?</label>
-        <select id="q15" name="q15" required>
-            <option value="">-- Select --</option>
-            <option value="5">Yes, and I stayed invested</option>
-            <option value="4">Yes, with some panic but stayed</option>
-            <option value="3">Exited partially</option>
-            <option value="2">Exited completely</option>
-            <option value="1">Never invested before</option>
-        </select></div>
-
-        <!-- Q16 -->
-                            <div class="question">
-        <label>16. Are you comfortable with complex products (F&O, PMS)?</label>
-        <select id="q16" name="q16" required>
-            <option value="">-- Select --</option>
-            <option value="5">Very Comfortable</option>
-            <option value="4">Somewhat Familiar</option>
-            <option value="3">Heard of them</option>
-            <option value="2">Not Comfortable</option>
-            <option value="1">Don’t Understand Them</option>
-        </select></div>
-
-        <!-- Q17 -->
-                                <div class="question">
-        <label>17. How often do you review your investments?</label>
-        <select id="q17" name="q17" required>
-            <option value="">-- Select --</option>
-            <option value="5">Weekly</option>
-            <option value="4">Monthly</option>
-            <option value="3">Quarterly</option>
-            <option value="2">Yearly</option>
-            <option value="1">Never</option>
-        </select></div>
-
-        <!-- Q18 -->
-                                    <div class="question">
-        <label>18. How do you prefer to invest?</label>
-        <select id="q18" name="q18" required>
-            <option value="">-- Select --</option>
-            <option value="5">On my own (DIY)</option>
-            <option value="4">Via Advisor</option>
-            <option value="3">Bank RM</option>
-            <option value="2">Friends/Relatives’ Suggestions</option>
-            <option value="1">No preference</option>
-        </select></div>
-
-        <!-- Q19 -->
-                                        <div class="question">
-        <label>19. Your decision-making style:</label>
-        <select id="q19" name="q19" required>
-            <option value="">-- Select --</option>
-            <option value="5">Independent & Fast</option>
-            <option value="4">Research-based</option>
-            <option value="3">Need multiple opinions</option>
-            <option value="2">Take time to decide</option>
-            <option value="1">Totally dependent on others</option>
-        </select></div>
-
-        <!-- Q20 -->
-        <div class="question">
-        <label>20. What will you do if your portfolio drops 20%?</label>
-        <select id="q20" name="q20" required>
-            <option value="">-- Select --</option>
-            <option value="5">Buy more</option>
-            <option value="4">Hold patiently</option>
-            <option value="3">Partially withdraw</option>
-            <option value="2">Exit all investments</option>
-            <option value="1">Panic and blame</option>
-        </select>
-        </div>
-
-
-        <!-- Add more questions below... (we'll add full set later) -->
-
-        <button type="submit">Submit</button>
-    </form>
-
-    <div class="result" id="resultBox">
-        <strong>Your Risk Profile:</strong> <span id="riskCategory">Calculating...</span>
     </div>
-
-    <button class="whatsapp-btn" id="whatsappRedirect" style="display:none;">
-        📲 Contact Us on WhatsApp
-    </button>
 </div>
-
-
+<!-- Risk Profiling End -->
 
 <!-- Footer Start -->
 <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">

@@ -251,7 +251,23 @@ document.addEventListener('DOMContentLoaded', function() {
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Analyzing...';
 
-        // Collect all answers
+        // Validate all required fields are answered
+        let allAnswered = true;
+        for (let i = 1; i <= 20; i++) {
+            if (!document.getElementById(`q${i}`).value) {
+                allAnswered = false;
+                break;
+            }
+        }
+
+        if (!allAnswered) {
+            alert('Please answer all questions before submitting.');
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Calculate My Risk Profile';
+            return;
+        }
+
+        // Collect all answers with validation
         const answers = {
             name: document.getElementById('name').value.trim(),
             email: document.getElementById('email').value.trim(),
@@ -259,9 +275,9 @@ document.addEventListener('DOMContentLoaded', function() {
             timestamp: new Date().toISOString()
         };
 
-        // Add all question answers (Q1-Q20)
+        // Add all question answers with fallback values
         for (let i = 1; i <= 20; i++) {
-            answers[`q${i}`] = document.getElementById(`q${i}`).value;
+            answers[`q${i}`] = document.getElementById(`q${i}`).value || "0";
         }
 
         // Calculate Risk Score (Sum of all values)
@@ -284,9 +300,21 @@ document.addEventListener('DOMContentLoaded', function() {
         answers.riskScore = totalScore;
         answers.riskProfile = riskProfile;
 
+        // Debug: Verify all questions are collected
+        console.log("Collected answers:", answers);
+        for (let i = 1; i <= 20; i++) {
+          console.log(`Q${i}:`, answers[`q${i}`],
+                     "Element:", document.getElementById(`q${i}`));
+        }
+
+        // Debug: Log the data being sent
+        console.log("Submitting data:", answers);
+
+
+
         try {
             // Send to Google Sheets
-            await fetch('https://script.google.com/macros/s/AKfycbzlUHTDJFUQf4xrYLCNAqUT5Chrp9z0rzdrXCh4MB8Ch3_hrPjb2iA3EU7C8mGLbAZ-/exec', {
+            const response = await fetch('https://script.google.com/macros/s/AKfycbw-1_NPhZ60M_Bl9_XZBAOx1YM3knZm_JCUNQEJcL4v5Ok7vj8KMVGYfP8UjRvWlTEZ/exec', {
                 method: 'POST',
                 body: JSON.stringify(answers),
                 headers: { 'Content-Type': 'application/json' },
@@ -298,7 +326,7 @@ document.addEventListener('DOMContentLoaded', function() {
             riskForm.reset();
         } catch (error) {
             console.error('Error:', error);
-            alert('Submission failed. Please try again.');
+            alert('Submission failed. Please try again or contact support.');
         } finally {
             submitBtn.disabled = false;
             submitBtn.textContent = 'Calculate My Risk Profile';
