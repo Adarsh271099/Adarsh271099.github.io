@@ -244,7 +244,6 @@
 
 document.addEventListener('DOMContentLoaded', function() {
   const nameForm = document.getElementById('nameForm');
-  const nameInput = document.getElementById('nameInput');
   const submitBtn = document.getElementById('submit-response');
 
   nameForm.addEventListener('submit', async function(e) {
@@ -255,22 +254,21 @@ document.addEventListener('DOMContentLoaded', function() {
     submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Submitting...';
 
     const formData = {
-      name: nameInput.value.trim(),
-      timestamp: new Date().toISOString() // Optional: Add timestamp
+      name: document.getElementById('nameInput').value.trim(),
+      email: document.getElementById('emailInput').value.trim(),
+      mobile: document.getElementById('mobileInput').value.trim(),
+      timestamp: new Date().toISOString()
     };
 
     try {
-      const response = await fetch('https://script.google.com/macros/s/AKfycbzXMazqX-o8njk5l31HdY6a-0iqT31Pz-o7Dk5lHMEtLcoMq_CDt_OEn8O3BBIXnN8w/exec', {
+      await fetch('https://script.google.com/macros/s/AKfycby_qM5cSaPU6Shht7Jv-xwl6VegePx2FLTOBaHWhmK7Il6XitrqEn7x04r-BZa4jCV1/exec', {
         method: 'POST',
         body: JSON.stringify(formData),
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         mode: 'no-cors'
       });
 
-      // Show success message
-      alert('Thank you, ' + formData.name + '! Your response has been saved.');
+      alert(`Thank you, ${formData.name}! We've received your details.`);
       nameForm.reset();
     } catch (error) {
       console.error('Error:', error);
