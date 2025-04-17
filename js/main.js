@@ -243,41 +243,67 @@
     });
 
 document.addEventListener('DOMContentLoaded', function() {
-  const nameForm = document.getElementById('nameForm');
-  const submitBtn = document.getElementById('submit-response');
+    const riskForm = document.getElementById('riskForm');
+    const submitBtn = document.getElementById('submit-risk');
 
-  nameForm.addEventListener('submit', async function(e) {
-    e.preventDefault();
+    riskForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Analyzing...';
 
-    // Disable button during submission
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Submitting...';
+        // Collect all answers
+        const answers = {
+            name: document.getElementById('name').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            mobile: document.getElementById('mobile').value.trim(),
+            timestamp: new Date().toISOString()
+        };
 
-    const formData = {
-      name: document.getElementById('nameInput').value.trim(),
-      email: document.getElementById('emailInput').value.trim(),
-      mobile: document.getElementById('mobileInput').value.trim(),
-      timestamp: new Date().toISOString()
-    };
+        // Add all question answers (Q1-Q20)
+        for (let i = 1; i <= 20; i++) {
+            answers[`q${i}`] = document.getElementById(`q${i}`).value;
+        }
 
-    try {
-      await fetch('https://script.google.com/macros/s/AKfycby_qM5cSaPU6Shht7Jv-xwl6VegePx2FLTOBaHWhmK7Il6XitrqEn7x04r-BZa4jCV1/exec', {
-        method: 'POST',
-        body: JSON.stringify(formData),
-        headers: { 'Content-Type': 'application/json' },
-        mode: 'no-cors'
-      });
+        // Calculate Risk Score (Sum of all values)
+        let totalScore = 0;
+        for (let i = 1; i <= 20; i++) {
+            totalScore += parseInt(answers[`q${i}`]) || 0;
+        }
 
-      alert(`Thank you, ${formData.name}! We've received your details.`);
-      nameForm.reset();
-    } catch (error) {
-      console.error('Error:', error);
-      alert('Error submitting form. Please try again.');
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Submit';
-    }
-  });
+        // Determine Risk Profile
+        let riskProfile;
+        if (totalScore >= 80) {
+            riskProfile = "Aggressive";
+        } else if (totalScore >= 50) {
+            riskProfile = "Moderate";
+        } else {
+            riskProfile = "Conservative";
+        }
+
+        // Add to submission data
+        answers.riskScore = totalScore;
+        answers.riskProfile = riskProfile;
+
+        try {
+            // Send to Google Sheets
+            await fetch('https://script.google.com/macros/s/AKfycbzlUHTDJFUQf4xrYLCNAqUT5Chrp9z0rzdrXCh4MB8Ch3_hrPjb2iA3EU7C8mGLbAZ-/exec', {
+                method: 'POST',
+                body: JSON.stringify(answers),
+                headers: { 'Content-Type': 'application/json' },
+                mode: 'no-cors'
+            });
+
+            // Show Result to User
+            alert(`Your Risk Profile: ${riskProfile}\nScore: ${totalScore}/100`);
+            riskForm.reset();
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Submission failed. Please try again.');
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Calculate My Risk Profile';
+        }
+    });
 });
 
 })(jQuery);
