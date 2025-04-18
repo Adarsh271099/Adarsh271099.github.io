@@ -130,3 +130,21 @@ button#submit-risk.btn.btn-primary:hover {
         margin-bottom: 0 !important;
     }
 }
+
+/* Ensure horizontal centering on mobile */
+@media (max-width: 768px) {
+  div.container.py-5 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  div.container.py-5 .row.justify-content-center {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  div.container.py-5 .col-md-10 {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
