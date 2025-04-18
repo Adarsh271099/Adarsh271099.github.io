@@ -8,14 +8,14 @@ div#riskForm {
 }
 
 /* Card Container */
-div.container.py-5 div.row.justify-content-center div.col-md-10 div.card.shadow-sm {
+div.container.py-5 div.row.justify-content-center div.col-md-10 div.wow.shadow-sm {
     border: none !important;
     background: #fff !important;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Card Body */
-div.container.py-5 div.card-body.p-5 {
+div.container.py-5 div.wow-body.p-5 {
     padding: 2.5rem !important;
     background: #fff !important;
 }
@@ -73,12 +73,13 @@ div#riskForm label.form-label {
     line-height: 1.5 !important;
 }
 
+
 /* Select Dropdown Arrow */
 div#riskForm select.form-select {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e") !important;
     background-repeat: no-repeat !important;
     background-position: right 0.75rem center !important;
-    background-size: 16px 12px !important;
+    backgrounxd-size: 16px 12px !important;
 }
 
 /* Each Question Container */
@@ -117,7 +118,7 @@ button#submit-risk.btn.btn-primary:hover {
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-    div.container.py-5 div.card-body.p-5 {
+    div.container.py-5 div.wow-body.p-5 {
         padding: 2rem !important;
     }
 
