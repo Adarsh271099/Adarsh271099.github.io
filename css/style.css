@@ -3093,6 +3093,12 @@ input:checked + .slider:before {
     display: block;
 }
 
+.pricing-card .price {
+    font-size: 28px;
+    font-weight: 700;
+    color: #f39c12;
+    margin-bottom: 20px;
+}
 .pricing-card ul {
     list-style: none;
     padding: 0;
