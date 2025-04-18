@@ -1,0 +1,131 @@
+/* RISK FORM CSS - STRONG OVERRIDES */
+/* ================================ */
+
+/* Main Form Container */
+div#riskForm {
+    all: initial; /* Reset all inherited styles */
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+/* Card Container */
+div.container.py-5 div.row.justify-content-center div.col-md-10 div.card.shadow-sm {
+    border: none !important;
+    background: #fff !important;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Card Body */
+div.container.py-5 div.card-body.p-5 {
+    padding: 2.5rem !important;
+    background: #fff !important;
+}
+
+/* Form Header */
+div.container.py-5 h3.text-primary {
+    color: #0d6efd !important;
+    font-size: 1.75rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 2rem !important;
+    padding-bottom: 1rem !important;
+    border-bottom: 2px solid rgba(13, 110, 253, 0.2) !important;
+}
+
+/* Personal Details Row */
+div#riskForm > div.row.mb-4.border-bottom.pb-3 {
+    margin-bottom: 2rem !important;
+    padding-bottom: 1.5rem !important;
+    border-bottom: 1px solid #e9ecef !important;
+}
+
+/* All Form Inputs - Forceful Override */
+div#riskForm input.form-control,
+div#riskForm select.form-select {
+    width: 100% !important;
+    padding: 0.75rem 1rem !important;
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+    color: #495057 !important;
+    background-color: #fff !important;
+    background-clip: padding-box !important;
+    border: 1px solid #ced4da !important;
+    border-radius: 0.5rem !important;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+    margin-bottom: 0 !important; /* Remove any default margins */
+    box-shadow: none !important;
+    appearance: none !important;
+}
+
+/* Focus States */
+div#riskForm input.form-control:focus,
+div#riskForm select.form-select:focus {
+    border-color: #86b7fe !important;
+    outline: 0 !important;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25) !important;
+}
+
+/* Labels - Strong Override */
+div#riskForm label.form-label {
+    display: block !important;
+    margin-bottom: 0.5rem !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    color: #212529 !important;
+    line-height: 1.5 !important;
+}
+
+/* Select Dropdown Arrow */
+div#riskForm select.form-select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 0.75rem center !important;
+    background-size: 16px 12px !important;
+}
+
+/* Each Question Container */
+div#riskForm div.risk-questions > div.mb-4 {
+    margin-bottom: 1.5rem !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+/* Submit Button - Complete Override */
+button#submit-risk.btn.btn-primary {
+    width: 100% !important;
+    padding: 1rem !important;
+    font-size: 1.125rem !important;
+    font-weight: 600 !important;
+    line-height: 1.5 !important;
+    color: #fff !important;
+    background-color: #0d6efd !important;
+    border: 1px solid #0d6efd !important;
+    border-radius: 0.5rem !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    margin-top: 1.5rem !important;
+    box-shadow: none !important;
+}
+
+button#submit-risk.btn.btn-primary:hover {
+    background-color: #0b5ed7 !important;
+    border-color: #0a58ca !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 8px rgba(13, 110, 253, 0.3) !important;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    div.container.py-5 div.card-body.p-5 {
+        padding: 2rem !important;
+    }
+
+    div#riskForm > div.row.mb-4.border-bottom.pb-3 > div[class^='col-md-'] {
+        margin-bottom: 1rem !important;
+    }
+
+    div#riskForm > div.row.mb-4.border-bottom.pb-3 > div[class^='col-md-']:last-child {
+        margin-bottom: 0 !important;
+    }
+}
