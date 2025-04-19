@@ -410,11 +410,16 @@ form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
   const submitBtn = form.querySelector('button[type="submit"]');
+  const originalBtnText = submitBtn.textContent;
+
+  // UI updates
   submitBtn.disabled = true;
-  messageDiv.textContent = 'Submitting...';
-  messageDiv.style.color = 'blue';
+  submitBtn.textContent = 'Processing...';
+  messageDiv.textContent = '';
+  messageDiv.style.color = '';
 
   try {
+    // Prepare payload
     const data = new FormData(form);
     const payload = {
       name: data.get('name'),
@@ -426,34 +431,60 @@ form.addEventListener('submit', async (e) => {
       amount: amountSpan.textContent
     };
 
-    // Basic validation
-    if (!payload.name || !payload.email || !payload.mobile ||
-        !payload.service || !payload.planType || !payload.term ||
-        payload.amount === '0') {
-      throw new Error('Please fill all fields and select valid options');
+    // Validate before sending
+    if (!payload.name || !payload.email || !payload.mobile) {
+      throw new Error('Please fill all required fields');
     }
 
-    const response = await fetch("https://script.google.com/macros/s/AKfycbyVyPFUvhrWFdNBVm_WHXQ8hTWcooXclo76SL2c2V2sn1FVF47s6cpa61EjguEn7rAfsA/exec", {
+    // IMPORTANT: Replace with your actual GAS URL
+    const GAS_URL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec";
+
+    // Enhanced fetch request
+    const response = await fetch(GAS_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(payload)
+      body: JSON.stringify(payload),
+      redirect: 'follow',  // Critical for GAS
+      referrerPolicy: 'no-referrer-when-downgrade'
     });
 
-    if (!response.ok) throw new Error('Server response not OK');
+    // Handle non-OK responses
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`Server responded with ${response.status}: ${errorText}`);
+    }
 
+    const result = await response.json();
+
+    // Handle GAS response
+    if (result.status === 'error') {
+      throw new Error(result.message || 'Submission failed');
+    }
+
+    // Success handling
     form.reset();
     amountSpan.textContent = '0';
-    messageDiv.textContent = "✅ Thank you! You will receive the payment link shortly on WhatsApp.";
+    messageDiv.textContent = "✅ Thank you! Payment link will be sent shortly.";
     messageDiv.style.color = 'green';
 
   } catch (error) {
     console.error('Submission error:', error);
-    messageDiv.textContent = `❌ Error: ${error.message}`;
+
+    // User-friendly error messages
+    let errorMessage = error.message;
+    if (error.message.includes('Failed to fetch')) {
+      errorMessage = "Network error. Please check your internet connection and try again.";
+    }
+
+    messageDiv.textContent = `❌ ${errorMessage}`;
     messageDiv.style.color = 'red';
+
   } finally {
+    // Reset button state
     submitBtn.disabled = false;
+    submitBtn.textContent = originalBtnText;
   }
 });
 
