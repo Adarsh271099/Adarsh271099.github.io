@@ -344,7 +344,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const segmentField = document.getElementById('segment-type');
   const planField = document.getElementById('membership-plan');
   const timeframeField = document.getElementById('subscription-timeframe');
-  const priceDisplay = document.getElementById('calculated-price');
+  const finalpriceDisplay = document.getElementById('calculated-finalprice');
 
   // Pricing configuration
   const finalpriceCalculation = {
@@ -400,9 +400,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (selectedSegment && selectedPlan && selectedTimeframe) {
         const finalprice = finalpriceCalculation[selectedSegment][selectedPlan][selectedTimeframe];
-        priceDisplay.textContent = finalprice;
+        finalpriceDisplay.textContent = finalprice;
       } else {
-        priceDisplay.textContent = "0";
+        finalpriceDisplay.textContent = "0";
       }
   }
 
@@ -413,76 +413,85 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Form submission handler
   button.addEventListener('click', function () {
-    const name = nameField.value.trim();
-    const mobile = mobileField.value.trim();
-    const email = emailField.value.trim();
-    const segment = segmentField.value;
-    const plan = planField.value;
-    const timeframe = timeframeField.value;
-    const finalprice = priceDisplay.textContent;
+      const name = nameField.value.trim();
+      const mobile = mobileField.value.trim();
+      const email = emailField.value.trim();
+      const segment = segmentField.value;
+      const plan = planField.value;
+      const timeframe = timeframeField.value;
+      const finalprice = finalpriceDisplay.textContent;
 
-    // Validation
-    if (!name || !mobile || !email || !segment || !plan || !timeframe || finalprice === "0") {
-      alert("Please fill in all fields.");
-      return;
-    }
+      // Validation (keep your existing validation code)
+      if (!name || !mobile || !email || !segment || !plan || !timeframe || finalprice === "0") {
+        alert("Please fill in all fields.");
+        return;
+      }
 
-    // Mobile number validation
-    if (!/^\d{10}$/.test(mobile)) {
-      alert("Please enter a valid 10-digit mobile number.");
-      return;
-    }
+      if (!/^\d{10}$/.test(mobile)) {
+        alert("Please enter a valid 10-digit mobile number.");
+        return;
+      }
 
-    // Email validation
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      alert("Please enter a valid email address.");
-      return;
-    }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        alert("Please enter a valid email address.");
+        return;
+      }
 
-    console.log("Submitting:", {
-      name,
-      mobile,
-      email,
-      segment,
-      membership_plan: plan,
-      subscription_timeframe: timeframe,
-      finalprice
+      console.log("Submitting:", {
+        name,
+        mobile,
+        email,
+        segment,
+        membership_plan: plan,
+        subscription_timeframe: timeframe,
+        finalprice
+      });
+
+      // Add loading state
+      const originalButtonText = button.textContent;
+      button.innerHTML = '<span class="spinner"></span> Submitting';
+      button.disabled = true;
+
+      const formData = new FormData();
+      formData.append("name", name);
+      formData.append("mobile", mobile);
+      formData.append("email", email);
+      formData.append("segment", segment);
+      formData.append("membership_plan", plan);
+      formData.append("subscription_timeframe", timeframe);
+      formData.append("finalprice", finalprice);
+
+      fetch("https://script.google.com/macros/s/AKfycbwfzEKt77s0hQMhTyn5frxoPfWqTfafziu8s04VElgYTGkcaWErmtLjTEHo0cjkIIHP/exec", {
+        method: "POST",
+        body: formData,
+        mode: "no-cors"
+      })
+      .then(() => {
+        // Clear form
+        nameField.value = "";
+        mobileField.value = "";
+        emailField.value = "";
+        segmentField.value = "";
+        planField.value = "";
+        timeframeField.value = "";
+        finalpriceDisplay.textContent = "0";
+        timeframeField.innerHTML = originalTimeframeOptions;
+
+        // Show success state briefly before resetting
+        button.textContent = "✓ Submitted";
+        setTimeout(() => {
+          button.textContent = originalButtonText;
+          button.disabled = false;
+        }, 2000);
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        button.textContent = originalButtonText;
+        button.disabled = false;
+        alert("There was an error submitting the data. Please try again.");
+      });
     });
 
-    const formData = new FormData();
-    formData.append("name", name);
-    formData.append("mobile", mobile);
-    formData.append("email", email);
-    formData.append("segment", segment);
-    formData.append("membership_plan", plan);
-    formData.append("subscription_timeframe", timeframe);
-    formData.append("finalprice", finalprice);
-
-    fetch("https://script.google.com/macros/s/AKfycbwfzEKt77s0hQMhTyn5frxoPfWqTfafziu8s04VElgYTGkcaWErmtLjTEHo0cjkIIHP/exec", {
-      method: "POST",
-      body: formData,
-      mode: "no-cors"
-    })
-    .then(() => {
-      // Clear form
-      nameField.value = "";
-      mobileField.value = "";
-      emailField.value = "";
-      segmentField.value = "";
-      planField.value = "";
-      timeframeField.value = "";
-      priceDisplay.textContent = "0";
-
-      // Restore original timeframe options
-      timeframeField.innerHTML = originalTimeframeOptions;
-
-      alert("Data submitted successfully!");
-    })
-    .catch(error => {
-      console.error("Error:", error);
-      alert("There was an error submitting the data. Please try again.");
-    });
-  });
 
   // Initialize form
   updateForm();

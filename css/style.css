@@ -3213,60 +3213,197 @@ input:checked + .slider:before {
     height: 30px;
 }
 
-/* CREDIT-AMOUNT-container */
-.CREDIT-AMOUNT-container {
-  max-width: 400px;
+/* final-price-container */
+/* TESTER-ONE-container */
+/* FINAL PRICE CONTAINER */
+.FINAL-PRICE-CONTAINER {
+  max-width: 600px;
   margin: 40px auto;
-  background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  font-family: 'Segoe UI', sans-serif;
+  padding: 5px;
+  background: linear-gradient(135deg, #f9f5ff 0%, #ffffff 100%);
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(106, 13, 173, 0.12);
 }
 
-.CREDIT-AMOUNT-title {
-  text-align: center;
-  font-size: 20px;
-  margin-bottom: 20px;
+/* Original Tester One Container */
+.tester-one {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 15px;
+  border: 1px solid #f0e5ff;
 }
 
-.CREDIT-AMOUNT-input,
-.CREDIT-AMOUNT-select {
+/* Input Fields */
+.input-name,
+.input-mobile,
+.input-email,
+.input-segment,
+.input-membership-plan,
+.input-subscription-timeframe {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 14px;
-}
-
-.CREDIT-AMOUNT-amount-display {
-  text-align: center;
-  font-weight: bold;
-  margin: 15px 0;
+  padding: 14px 18px;
+  margin-bottom: 18px;
+  border: 1px solid #e5d9f7;
+  border-radius: 10px;
   font-size: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: #fcfaff;
 }
 
-.CREDIT-AMOUNT-button {
-  width: 100%;
-  padding: 12px;
-  background-color: #6a0dad;
-  color: white;
-  font-size: 15px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
+/* Select Dropdowns */
+.input-segment,
+.input-membership-plan,
+.input-subscription-timeframe {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236a0dad'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 20px;
 }
 
-.CREDIT-AMOUNT-button:hover {
-  background-color: #580ca0;
+/* Focus States */
+.input-name:focus,
+.input-mobile:focus,
+.input-email:focus,
+.input-segment:focus,
+.input-membership-plan:focus,
+.input-subscription-timeframe:focus {
+  border-color: #6a0dad;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(106, 13, 173, 0.15);
+  background-color: #ffffff;
 }
 
-.CREDIT-AMOUNT-success-msg {
-  margin-top: 20px;
+/* Price Display Section */
+.price-display {
   text-align: center;
-  color: green;
-  font-weight: 500;
+  margin: 25px 0;
+  padding: 18px;
+  background: linear-gradient(to right, #f9f5ff, #ffffff);
+  border-radius: 12px;
+  border: 1px dashed #d0b8ff;
+  font-size: 1.3em;
+  font-weight: 600;
+  color: #4a1b7d;
 }
 
+#calculated-finalprice {
+  color: #6a0dad;
+  font-size: 1.5em;
+  text-shadow: 0 2px 4px rgba(106, 13, 173, 0.1);
+}
 
+/* Submit Button */
+.submit-to-sheet {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(to right, #6a0dad, #8a2be2);
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.submit-to-sheet:hover {
+  background: linear-gradient(to right, #580ca0, #7b1dd3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(106, 13, 173, 0.25);
+}
+
+.submit-to-sheet:active {
+  transform: translateY(0);
+}
+
+/* Placeholder Styling */
+::placeholder {
+  color: #b8a1d6;
+  opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 650px) {
+  .FINAL-PRICE-CONTAINER {
+    margin: 20px 15px;
+    border-radius: 12px;
+  }
+
+  .tester-one {
+    padding: 20px 15px;
+  }
+
+  .input-name,
+  .input-mobile,
+  .input-email,
+  .input-segment,
+  .input-membership-plan,
+  .input-subscription-timeframe {
+    padding: 12px 15px;
+    font-size: 15px;
+  }
+}
+
+/* Add these new styles to your existing CSS */
+
+/* Loading state styles */
+.submit-to-sheet.loading {
+  position: relative;
+  color: transparent;
+  pointer-events: none;
+}
+
+.submit-to-sheet.loading::after {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 50%;
+  left: 50%;
+  margin: -12px 0 0 -12px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Success message style */
+.submission-success {
+  text-align: center;
+  margin-top: 20px;
+  color: #28a745;
+  font-weight: 600;
+  font-size: 16px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s ease;
+}
+
+.submission-success.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Add this to your existing CSS */
+.submit-to-sheet .spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
