@@ -146,43 +146,46 @@
 </div>
 <!-- Header End -->
 
-<div class="CREDIT-AMOUNT-container">
-    <h2 class="CREDIT-AMOUNT-title">Payment Request Form</h2>
-    <form id="CREDIT-AMOUNT-form">
-        <input type="text" name="name" placeholder="Full Name" required class="CREDIT-AMOUNT-input"/>
-        <input type="email" name="email" placeholder="Email" required class="CREDIT-AMOUNT-input"/>
-        <input type="tel" name="mobile" placeholder="Mobile Number" required class="CREDIT-AMOUNT-input"/>
 
-        <select name="service" id="CREDIT-AMOUNT-service" required class="CREDIT-AMOUNT-select">
-            <option value="">Select Service</option>
-            <option value="Equity Calls Segment">Equity Calls Segment</option>
-            <option value="Option Calls Segment">Option Calls Segment</option>
-            <option value="Portfolio Building">Portfolio Building</option>
-        </select>
 
-        <select name="planType" id="CREDIT-AMOUNT-plan" required class="CREDIT-AMOUNT-select">
-            <option value="">Select Plan Type</option>
-            <option value="Basic">Basic</option>
-            <option value="Advance">Advanced</option>
-            <option value="Premium">Premium</option>
-        </select>
+<div class="tester-one" id="tester-one">
+    <input type="text" class="input-name" placeholder="Enter your name" />
+    <input type="text" class="input-mobile" placeholder="Enter your mobile number" />
+    <input type="email" class="input-email" placeholder="Enter your email" />
 
-        <select name="term" id="CREDIT-AMOUNT-term" required class="CREDIT-AMOUNT-select">
-            <option value="">Select Term Period</option>
-            <option value="Monthly">Monthly</option>
-            <option value="Quarterly">Quarterly</option>
-            <option value="Yearly">Yearly</option>
-        </select>
+    <!-- Segment Type Dropdown -->
+    <select class="input-segment" id="segment-type">
+        <option value="" disabled selected>Select segment type</option>
+        <option value="Equity calls segment">Equity calls segment</option>
+        <option value="Options Call Segment">Options Call Segment</option>
+        <option value="Portfolio Building">Portfolio Building</option>
+    </select>
 
-        <div class="CREDIT-AMOUNT-amount-display">
-            Amount Payable: ₹<span id="CREDIT-AMOUNT-amount">0</span>
-        </div>
+    <!-- Plan Type Dropdown - Made more specific -->
+    <select class="input-membership-plan" id="membership-plan">
+        <option value="" disabled selected>Select membership plan</option>
+        <option value="Basics">Basics</option>
+        <option value="Advanced">Advanced</option>
+        <option value="Premium">Premium</option>
+    </select>
 
-        <button type="submit" class="CREDIT-AMOUNT-button">Generate Payment Link</button>
-    </form>
+    <!-- Timeframe Dropdown - Made more specific -->
+    <select class="input-subscription-timeframe" id="subscription-timeframe">
+        <option value="" disabled selected>Select subscription period</option>
+        <option value="Monthly">Monthly</option>
+        <option value="Quarterly">Quarterly</option>
+        <option value="Yearly">Yearly</option>
+    </select>
 
-    <div id="CREDIT-AMOUNT-message" class="CREDIT-AMOUNT-success-msg"></div>
+    <!-- Add this price display element anywhere in your form -->
+    <div class="price-display" style="margin: 20px 0; font-size: 1.2em; font-weight: bold;">
+        Selected Price: <span id="calculated-price">0</span> INR
+    </div>
+
+    <button class="submit-to-sheet">Submit</button>
 </div>
+
+
 
 <!-- Footer Start -->
 <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">

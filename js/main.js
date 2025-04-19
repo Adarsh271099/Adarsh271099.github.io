@@ -335,157 +335,157 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-const form = document.getElementById('CREDIT-AMOUNT-form');
-const amountSpan = document.getElementById('CREDIT-AMOUNT-amount'); // Fixed ID (was CREDIT-AMOUNT-amount)
-const messageDiv = document.getElementById('CREDIT-AMOUNT-message');
+document.addEventListener("DOMContentLoaded", function () {
+  // Form elements
+  const button = document.querySelector('.submit-to-sheet');
+  const nameField = document.querySelector('.input-name');
+  const mobileField = document.querySelector('.input-mobile');
+  const emailField = document.querySelector('.input-email');
+  const segmentField = document.getElementById('segment-type');
+  const planField = document.getElementById('membership-plan');
+  const timeframeField = document.getElementById('subscription-timeframe');
+  const priceDisplay = document.getElementById('calculated-price');
 
-const CREDIT_AMT_pricingMatrix = {
-  "Equity Calls Segment": {
-    "Basic":    { "Monthly": 3499,  "Quarterly": 9999, "Yearly": 34999 },
-    "Advance":  { "Monthly": 3599,  "Quarterly": 10299, "Yearly": 35499 },
-    "Premium":  { "Monthly": 3699, "Quarterly": 10599, "Yearly": 35999 }
-  },
-  "Option Calls Segment": {
-    "Basic":    { "Monthly": 4499,  "Quarterly": 749,  "Yearly": 2899 },
-    "Advance":  { "Monthly": 4799,  "Quarterly": 1499, "Yearly": 4999 },
-    "Premium":  { "Monthly": 4999,  "Quarterly": 2499, "Yearly": 8999 }
-  },
-  "Portfolio Building": {
-    "Basic":    { "Monthly": 5999,  "Quarterly": 5499, "Yearly": 19999 },
-    "Advance":  { "Monthly": 8999,  "Quarterly": 6999, "Yearly": 24999 },
-    "Premium":  { "Monthly": 11999,  "Quarterly": 8499, "Yearly": 29999 }
-  }
-};
+  // Pricing configuration
+  const finalpriceCalculation = {
+    "Equity calls segment": {
+      "Basics": { "Monthly": 3499, "Quarterly": 9999, "Yearly": 34999 },
+      "Advanced": { "Monthly": 3599, "Quarterly": 10299, "Yearly": 35499 },
+      "Premium": { "Monthly": 3699, "Quarterly": 10599, "Yearly": 35999 }
+    },
+    "Options Call Segment": {
+      "Basics": { "Monthly": 4499 },
+      "Advanced": { "Monthly": 4799 },
+      "Premium": { "Monthly": 4999 }
+    },
+    "Portfolio Building": {
+      "Basics": { "Monthly": 5999 },
+      "Advanced": { "Monthly": 8999 },
+      "Premium": { "Monthly": 11999 }
+    }
+  };
 
-// CALCULATION FUNCTIONS (ORIGINAL WORKING VERSION)
-function updateAmount() {
-  const service = document.getElementById('CREDIT-AMOUNT-service').value;
-  const plan = document.getElementById('CREDIT-AMOUNT-plan').value;
-  const term = document.getElementById('CREDIT-AMOUNT-term').value;
+  // Store original timeframe options
+  const originalTimeframeOptions = timeframeField.innerHTML;
 
-  let amt = 0;
-  if (service && plan && term) {
-    amt = CREDIT_AMT_pricingMatrix?.[service]?.[plan]?.[term] || 0;
-  }
-  amountSpan.textContent = amt.toLocaleString('en-IN');
-}
+  // Update timeframe options and price based on selections
+  function updateForm() {
+    const selectedSegment = segmentField.value;
+    const selectedPlan = planField.value;
+    const selectedTimeframe = timeframeField.value;
 
-function updateTermOptions() {
-  const service = document.getElementById('CREDIT-AMOUNT-service').value;
-  const termSelect = document.getElementById('CREDIT-AMOUNT-term');
+    // Update timeframe options
+    if (!selectedSegment) {
+      timeframeField.innerHTML = originalTimeframeOptions;
+    } else {
+      const allowedTimeframes = Object.keys(finalpriceCalculation[selectedSegment][selectedPlan] || {});
 
-  termSelect.innerHTML = '';
+      let optionsHTML = '<option value="" disabled selected>Select subscription period</option>';
+      allowedTimeframes.forEach(timeframe => {
+        optionsHTML += `<option value="${timeframe}">${timeframe}</option>`;
+      });
 
-  const defaultOption = document.createElement('option');
-  defaultOption.value = '';
-  defaultOption.textContent = 'Select Term Period';
-  termSelect.appendChild(defaultOption);
-
-  let terms = ["Monthly", "Quarterly", "Yearly"];
-  if (service === "Option Calls Segment" || service === "Portfolio Building") {
-    terms = ["Monthly"];
-  }
-
-  terms.forEach(term => {
-    const opt = document.createElement('option');
-    opt.value = term;
-    opt.textContent = term;
-    termSelect.appendChild(opt);
-  });
-
-  updateAmount();
-}
-
-// EVENT LISTENERS FOR CALCULATION (ORIGINAL WORKING VERSION)
-document.getElementById('CREDIT-AMOUNT-service').addEventListener('change', () => {
-  updateTermOptions();
-});
-
-['CREDIT-AMOUNT-plan', 'CREDIT-AMOUNT-term'].forEach(id =>
-  document.getElementById(id).addEventListener('change', updateAmount)
-);
-
-// FORM SUBMISSION WITH ERROR HANDLING (IMPROVED VERSION)
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-
-  const submitBtn = form.querySelector('button[type="submit"]');
-  const originalBtnText = submitBtn.textContent;
-
-  // UI updates
-  submitBtn.disabled = true;
-  submitBtn.textContent = 'Processing...';
-  messageDiv.textContent = '';
-  messageDiv.style.color = '';
-
-  try {
-    // Prepare payload
-    const data = new FormData(form);
-    const payload = {
-      name: data.get('name'),
-      email: data.get('email'),
-      mobile: data.get('mobile'),
-      service: data.get('service'),
-      planType: data.get('planType'),
-      term: data.get('term'),
-      amount: amountSpan.textContent
-    };
-
-    // Validate before sending
-    if (!payload.name || !payload.email || !payload.mobile) {
-      throw new Error('Please fill all required fields');
+      timeframeField.innerHTML = optionsHTML;
     }
 
-    // IMPORTANT: Replace with your actual GAS URL
-    const GAS_URL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec";
+    // Update price display
+    updateFinalpriceDisplay();
+  }
 
-    // Enhanced fetch request
-    const response = await fetch(GAS_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(payload),
-      redirect: 'follow',  // Critical for GAS
-      referrerPolicy: 'no-referrer-when-downgrade'
+  // Calculate and display the price
+  function updateFinalpriceDisplay() {
+      const selectedSegment = segmentField.value;
+      const selectedPlan = planField.value;
+      const selectedTimeframe = timeframeField.value;
+
+      if (selectedSegment && selectedPlan && selectedTimeframe) {
+        const finalprice = finalpriceCalculation[selectedSegment][selectedPlan][selectedTimeframe];
+        priceDisplay.textContent = finalprice;
+      } else {
+        priceDisplay.textContent = "0";
+      }
+  }
+
+  // Add event listeners
+  segmentField.addEventListener('change', updateForm);
+  planField.addEventListener('change', updateFinalpriceDisplay);
+  timeframeField.addEventListener('change', updateFinalpriceDisplay);
+
+  // Form submission handler
+  button.addEventListener('click', function () {
+    const name = nameField.value.trim();
+    const mobile = mobileField.value.trim();
+    const email = emailField.value.trim();
+    const segment = segmentField.value;
+    const plan = planField.value;
+    const timeframe = timeframeField.value;
+    const finalprice = priceDisplay.textContent;
+
+    // Validation
+    if (!name || !mobile || !email || !segment || !plan || !timeframe || finalprice === "0") {
+      alert("Please fill in all fields.");
+      return;
+    }
+
+    // Mobile number validation
+    if (!/^\d{10}$/.test(mobile)) {
+      alert("Please enter a valid 10-digit mobile number.");
+      return;
+    }
+
+    // Email validation
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
+    console.log("Submitting:", {
+      name,
+      mobile,
+      email,
+      segment,
+      membership_plan: plan,
+      subscription_timeframe: timeframe,
+      finalprice
     });
 
-    // Handle non-OK responses
-    if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error(`Server responded with ${response.status}: ${errorText}`);
-    }
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("mobile", mobile);
+    formData.append("email", email);
+    formData.append("segment", segment);
+    formData.append("membership_plan", plan);
+    formData.append("subscription_timeframe", timeframe);
+    formData.append("finalprice", finalprice);
 
-    const result = await response.json();
+    fetch("https://script.google.com/macros/s/AKfycbwfzEKt77s0hQMhTyn5frxoPfWqTfafziu8s04VElgYTGkcaWErmtLjTEHo0cjkIIHP/exec", {
+      method: "POST",
+      body: formData,
+      mode: "no-cors"
+    })
+    .then(() => {
+      // Clear form
+      nameField.value = "";
+      mobileField.value = "";
+      emailField.value = "";
+      segmentField.value = "";
+      planField.value = "";
+      timeframeField.value = "";
+      priceDisplay.textContent = "0";
 
-    // Handle GAS response
-    if (result.status === 'error') {
-      throw new Error(result.message || 'Submission failed');
-    }
+      // Restore original timeframe options
+      timeframeField.innerHTML = originalTimeframeOptions;
 
-    // Success handling
-    form.reset();
-    amountSpan.textContent = '0';
-    messageDiv.textContent = "✅ Thank you! Payment link will be sent shortly.";
-    messageDiv.style.color = 'green';
+      alert("Data submitted successfully!");
+    })
+    .catch(error => {
+      console.error("Error:", error);
+      alert("There was an error submitting the data. Please try again.");
+    });
+  });
 
-  } catch (error) {
-    console.error('Submission error:', error);
-
-    // User-friendly error messages
-    let errorMessage = error.message;
-    if (error.message.includes('Failed to fetch')) {
-      errorMessage = "Network error. Please check your internet connection and try again.";
-    }
-
-    messageDiv.textContent = `❌ ${errorMessage}`;
-    messageDiv.style.color = 'red';
-
-  } finally {
-    // Reset button state
-    submitBtn.disabled = false;
-    submitBtn.textContent = originalBtnText;
-  }
+  // Initialize form
+  updateForm();
 });
 
 })(jQuery);
