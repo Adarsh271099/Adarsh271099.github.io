@@ -370,26 +370,56 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Update timeframe options and price based on selections
   function updateForm() {
-    const selectedSegment = segmentField.value;
-    const selectedPlan = planField.value;
-    const selectedTimeframe = timeframeField.value;
+      const selectedSegment = segmentField.value;
+      const selectedPlan = planField.value;
 
-    // Update timeframe options
-    if (!selectedSegment) {
-      timeframeField.innerHTML = originalTimeframeOptions;
-    } else {
-      const allowedTimeframes = Object.keys(finalpriceCalculation[selectedSegment][selectedPlan] || {});
+      // First selection - show all options but disable invalid ones
+      if (!selectedSegment || !selectedPlan) {
+          let optionsHTML = '<option value="" disabled selected>Select subscription period</option>';
 
+          // Always show all three options
+          const allTimeframes = ["Monthly", "Quarterly", "Yearly"];
+
+          allTimeframes.forEach(timeframe => {
+              const disabled = selectedSegment &&
+                             selectedSegment !== "Equity calls segment" &&
+                             timeframe !== "Monthly";
+
+              optionsHTML += `
+                  <option value="${timeframe}" ${disabled ? 'disabled' : ''}>
+                      ${timeframe} ${disabled ? '(Not Available)' : ''}
+                  </option>
+              `;
+          });
+
+          timeframeField.innerHTML = optionsHTML;
+          finalpriceDisplay.textContent = "0";
+          return;
+      }
+
+      // After valid selection - enforce business rules
+      let allowedTimeframes;
+      if (selectedSegment === "Equity calls segment") {
+          allowedTimeframes = Object.keys(finalpriceCalculation[selectedSegment][selectedPlan] || []);
+      } else {
+          allowedTimeframes = ["Monthly"]; // Force Monthly for others
+      }
+
+      // Build available options
       let optionsHTML = '<option value="" disabled selected>Select subscription period</option>';
       allowedTimeframes.forEach(timeframe => {
-        optionsHTML += `<option value="${timeframe}">${timeframe}</option>`;
+          optionsHTML += `<option value="${timeframe}">${timeframe}</option>`;
       });
 
       timeframeField.innerHTML = optionsHTML;
-    }
 
-    // Update price display
-    updateFinalpriceDisplay();
+      // Handle price display
+      const currentTimeframe = timeframeField.value;
+      if (currentTimeframe && allowedTimeframes.includes(currentTimeframe)) {
+          updateFinalpriceDisplay();
+      } else {
+          finalpriceDisplay.textContent = "0";
+      }
   }
 
   // Calculate and display the price
