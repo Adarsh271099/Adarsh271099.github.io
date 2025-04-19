@@ -483,6 +483,8 @@ document.addEventListener("DOMContentLoaded", function () {
           button.textContent = originalButtonText;
           button.disabled = false;
         }, 2000);
+
+
       })
       .catch(error => {
         console.error("Error:", error);
