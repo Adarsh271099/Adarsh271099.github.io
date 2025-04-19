@@ -484,6 +484,31 @@ document.addEventListener("DOMContentLoaded", function () {
           button.disabled = false;
         }, 2000);
 
+        // Show custom popup
+          const paymentPopup = document.createElement('div');
+          paymentPopup.className = 'payment-link-popup';
+          paymentPopup.innerHTML = `
+            <div class="popup-content">
+              <h3>Thank You!</h3>
+              <p>You'll receive payment links via:</p>
+              <ul>
+                <li>Email at <strong>${email}</strong></li>
+                <li>WhatsApp on <strong>${mobile}</strong></li>
+              </ul>
+              <p>Please complete payment within 24 hours to activate your membership.</p>
+              <button class="close-popup">OK</button>
+            </div>
+          `;
+
+          document.body.appendChild(paymentPopup);
+
+          // Close popup handler
+          paymentPopup.querySelector('.close-popup').addEventListener('click', () => {
+            document.body.removeChild(paymentPopup);
+            button.textContent = originalButtonText;
+            button.disabled = false;
+          });
+
 
       })
       .catch(error => {
