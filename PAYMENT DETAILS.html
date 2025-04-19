@@ -113,7 +113,6 @@
 </div>
 <!-- Navbar & Hero End -->
 
-
 <!-- Modal Search Start -->
 <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen">
@@ -137,231 +136,53 @@
 <div class="container-fluid bg-breadcrumb">
     <div class="bg-breadcrumb-single"></div>
     <div class="container text-center py-5" style="max-width: 900px;">
-        <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">OPTION CALLS</h4>
+        <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">404 Pages</h4>
         <ol class="breadcrumb justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item"><a href="service.html">Services</a></li>
-            <li class="breadcrumb-item active text-primary">Option-calls</li>
+            <li class="breadcrumb-item"><a href="#">Pages</a></li>
+            <li class="breadcrumb-item active text-primary">404 Page</li>
         </ol>
     </div>
 </div>
 <!-- Header End -->
 
-<!--BODY START-->
-<div class="container">
-    <h1 style="margin-top: 30px; text-align: center;">Exclusive Option Calls Service</h1>
+<div class="CREDIT-AMOUNT-container">
+    <h2 class="CREDIT-AMOUNT-title">Payment Request Form</h2>
+    <form id="CREDIT-AMOUNT-form">
+        <input type="text" name="name" placeholder="Full Name" required class="CREDIT-AMOUNT-input"/>
+        <input type="email" name="email" placeholder="Email" required class="CREDIT-AMOUNT-input"/>
+        <input type="tel" name="mobile" placeholder="Mobile Number" required class="CREDIT-AMOUNT-input"/>
 
-    <p>Our subscription provides expert analysis, real-time updates, and strategic market insights to help you make informed trading decisions. Get timely option call recommendations and stay ahead in the financial markets with confidence.</p>
-    <p>Join us today and take your trading to the next level! 🚀</p>
+        <select name="service" id="CREDIT-AMOUNT-service" required class="CREDIT-AMOUNT-select">
+            <option value="">Select Service</option>
+            <option value="Equity Calls Segment">Equity Calls Segment</option>
+            <option value="Option Calls Segment">Option Calls Segment</option>
+            <option value="Portfolio Building">Portfolio Building</option>
+        </select>
 
-    <div class="offer-container">
-        <div class="offer-column">
-            <h2>What We Offer</h2>
-            <ul>
-                <li>✅ Regular option trading Calls with Reasoning</li>
-                <li>✅ Risk management, all trades with STOP LOSS</li>
-                <li>✅ Support & Resistance Levels and Market Trend</li>
-                <li>✅ Exclusive market research & analysis</li>
-                <li>✅ Trade execution updates</li>
-            </ul>
+        <select name="planType" id="CREDIT-AMOUNT-plan" required class="CREDIT-AMOUNT-select">
+            <option value="">Select Plan Type</option>
+            <option value="Basic">Basic</option>
+            <option value="Advance">Advanced</option>
+            <option value="Premium">Premium</option>
+        </select>
+
+        <select name="term" id="CREDIT-AMOUNT-term" required class="CREDIT-AMOUNT-select">
+            <option value="">Select Term Period</option>
+            <option value="Monthly">Monthly</option>
+            <option value="Quarterly">Quarterly</option>
+            <option value="Yearly">Yearly</option>
+        </select>
+
+        <div class="CREDIT-AMOUNT-amount-display">
+            Amount Payable: ₹<span id="CREDIT-AMOUNT-amount">0</span>
         </div>
-        <div class="offer-column">
-            <h2>What is Excluded</h2>
-            <ul>
-                <li>❌ No personalized investment advice</li>
-                <li>❌ No guaranteed profits or fixed returns</li>
-                <li>❌ No portfolio management services</li>
-                <li>❌ No refunds once the subscription is active</li>
-                <li>❌ No carry forward Trades</li>
-            </ul>
-        </div>
-    </div>
 
-    <h2 style="text-align: center; background-color: #ffcccb; padding: 10px; border-radius: 5px; display: inline-block;">🚨 Disclaimer 🚨</h2>
-    <p style="font-weight: bold; text-align: center; margin-top: 10px;">
-        ⚠️ Stock market investments are subject to market risks. Past performance does not indicate future success. Your capital is at high risk. <br>
-        <span style="text-align: left; display: block; margin-left: 10px;">📌 My NISM certifications and SEBI registration do not guarantee any returns.</span> <br>
-        ⚡ Investing and trading involve financial risk, and you are solely responsible for your decisions. ⚡ <br>
-        ❌ <span style="color: #d32f2f;">No Guarantee of Profits.</span>
-    </p>
+        <button type="submit" class="CREDIT-AMOUNT-button">Generate Payment Link</button>
+    </form>
 
-
-
-    <h2 style="text-align: center; background-color: #f4b400; padding: 10px; border-radius: 5px; display: inline-block; color: #fff; margin-top: 50px;">🔥 Subscription Plans 🔥</h2>
-
-    <div style="overflow-x: auto; white-space: nowrap; padding: 10px;">
-        <div style="display: flex; gap: 20px; justify-content: flex-start; min-width: 900px;">
-
-            <!-- Basic Plan -->
-            <div class="plan-box basic">
-                <div>
-                    <h3 class="plan-title">💰 Basic Plan</h3>
-                    <p class="old-price">₹5,999/-</p>
-                    <p class="new-price">🔥 ₹4,499/- month</p>
-                    <p class="offer-text">🚀 Limited Time Discount!</p>
-                    <table style="width: 100%; text-align: left;">
-                        <tr>
-                            <td>✅</td>
-                            <td>Option Trading Calls</td>
-                        </tr>
-                        <tr>
-                            <td>✅</td>
-                            <td>Trade Execution Updates</td>
-                        </tr>
-                        <tr>
-                            <td>✅</td>
-                            <td>Stop Loss</td>
-                        </tr>
-                    </table>
-                    <p class="highlight-text"> </p>
-                    <p class="no-feature">🚫 No Exclusive Research</p>
-                </div>
-                <a href="payment-page.html" class="button">🛒 Subscribe Now</a>
-            </div>
-
-            <!-- Advanced Plan -->
-            <div class="plan-box advanced">
-                <div>
-                    <h3 class="plan-title">🚀 Advanced Plan</h3>
-                    <p class="old-price">₹6,799/-</p>
-                    <p class="new-price">🔥 ₹4,799/- month</p>
-                    <p class="offer-text">🎯 Best Value Deal!</p>
-                    <table style="width: 100%; text-align: left;">
-                        <tr>
-                            <td>✅</td>
-                            <td>All Basic Features</td>
-                        </tr>
-                        <tr>
-                            <td>✅</td>
-                            <td>Support & Resistance Levels</td>
-                        </tr>
-                        <tr>
-                            <td>✅</td>
-                            <td>Exclusive Market Research</td>
-                        </tr>
-                    </table>
-                    <p class="highlight-text"> </p>
-                    <p class="no-feature">🚫 No Personal Risk Management</p>
-                </div>
-                <a href="payment-page.html" class="button">🛒 Subscribe Now</a>
-            </div>
-
-            <!-- Premium Plan -->
-            <div class="plan-box premium-plan">
-                <div>
-                    <h3 class="plan-title">👑 Premium Plan <span class="best-deal">🔥 BEST DEAL</span></h3>
-                    <p class="old-price">₹7,499/-</p>
-                    <p class="new-price">🔥 ₹4,999/- month</p>
-                    <p class="offer-text">💎 VIP Access & Strategy</p>
-                    <table style="width: 100%; text-align: left;">
-                        <tr>
-                            <td>✅</td>
-                            <td>All Advanced Features</td>
-                        </tr>
-                        <tr>
-                            <td>✅</td>
-                            <td>One-on-One Risk Management</td>
-                        </tr>
-                        <tr>
-                            <td>✅</td>
-                            <td>Priority Support</td>
-                        </tr>
-                        <tr>
-                            <td>✅</td>
-                            <td>Exclusive Trade Strategy</td>
-                        </tr>
-                    </table>
-                    <p class="highlight-text"> </p>
-                    <p class="highlight-text">🎯 Best for Serious Traders!</p>
-                </div>
-                <a href="payment-page.html" class="button">🛒 Subscribe Now</a>
-            </div>
-
-        </div>
-    </div>
-
-
-
-
-    <h2 style="text-align: center; margin-top: 80px">Legal & Compliance Information</h2>
-    <p>This service operates in compliance with SEBI/NISM regulations where applicable. While our research and strategies are well-informed, we are not responsible for financial outcomes resulting from market activities.</p>
-
-    <!--faq start-->
-    <div class="faq-section">
-        <h2 style="text-align: center; margin-top: 50px">Frequently Asked Questions (FAQs)</h2>
-
-        <div class="accordion" id="faqAccordion">
-
-            <!-- FAQ 1 -->
-            <div class="accordion-item border-0 mb-4">
-                <h2 class="accordion-header" id="faqOne">
-                    <button class="accordion-button collapsed text-dark fs-5 fw-bold rounded-top" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                        Can I get a refund if I don’t find the service useful?
-                    </button>
-                </h2>
-                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="faqOne" data-bs-parent="#faqAccordion">
-                    <div class="accordion-body my-2">
-                        <p>No, subscription fees are non-refundable as stated in our terms.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- FAQ 2 -->
-            <div class="accordion-item border-0 mb-4">
-                <h2 class="accordion-header" id="faqTwo">
-                    <button class="accordion-button collapsed text-dark fs-5 fw-bold rounded-top" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Can I cancel my subscription anytime?
-                    </button>
-                </h2>
-                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="faqTwo" data-bs-parent="#faqAccordion">
-                    <div class="accordion-body my-2">
-                        <p>Yes, you can cancel anytime before the next billing cycle.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- FAQ 3 -->
-            <div class="accordion-item border-0 mb-4">
-                <h2 class="accordion-header" id="faqThree">
-                    <button class="accordion-button collapsed text-dark fs-5 fw-bold rounded-top" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        Do you provide personal trading advice?
-                    </button>
-                </h2>
-                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="faqThree" data-bs-parent="#faqAccordion">
-                    <div class="accordion-body my-2">
-                        <p>No, we do not provide personalized investment advice, but we Provide One on One risk management sessions in Premium Plan</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
+    <div id="CREDIT-AMOUNT-message" class="CREDIT-AMOUNT-success-msg"></div>
 </div>
-<!--faq end-->
-
-
-    <div class="terms">
-        <h2 style="margin-top: 50px; margin-left: 20px">Terms & Conditions</h2>
-        <ul>
-            <li>📌 This service is for informational purposes only.</li>
-            <li>📌 No liability is assumed for any losses incurred.</li>
-            <li>📌 Users must conduct their own research before making investment decisions.</li>
-            <li>📌 Subscription fees are non-refundable.</li>
-        </ul>
-    </div>
-
-    <div class="contact-section">
-        <h2 style="margin-top: 50px; margin-left: 20px">Contact Us</h2>
-        <p style="margin-bottom: 50px; margin-left: 20px">For any queries, reach out to:
-            <strong>
-                <a href="mailto:adarshmnimborkar99@gmail.com" style="text-decoration: none; color: #007bff;">
-                    adarshmnimborkar99@gmail.com
-                </a>
-            </strong>
-        </p>
-    </div>
-</body>
-    <!--BODY end-->
 
 <!-- Footer Start -->
 <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">

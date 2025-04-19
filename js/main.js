@@ -183,19 +183,19 @@
 
         const planPrices = {
             monthly: {
-                basic: '🔥 ₹2,499/- month',
-                advanced: '🔥 ₹2,999/- month',
-                premium: '🔥 ₹3,199/- month'
+                basic: '🔥 ₹3,499/- month',
+                advanced: '🔥 ₹3,599/- month',
+                premium: '🔥 ₹3,699/- month'
             },
             quarterly: {
-                basic: '🔥 ₹6,499/- / 3 months',
-                advanced: '🔥 ₹7,999/- / 3 months',
-                premium: '🔥 ₹8,499/- / 3 months'
+                basic: '🔥 ₹9,999/- / 3 months',
+                advanced: '🔥 ₹10,299/- / 3 months',
+                premium: '🔥 ₹10,599/- / 3 months'
             },
             yearly: {
-                basic: '🔥 ₹22,999/- / year',
-                advanced: '🔥 ₹27,499/- / year',
-                premium: '🔥 ₹29,499/- / year'
+                basic: '🔥 ₹34,999/- / year',
+                advanced: '🔥 ₹35,499/- / year',
+                premium: '🔥 ₹35,999/- / year'
             }
         };
 
@@ -333,6 +333,128 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.textContent = 'Calculate My Risk Profile';
         }
     });
+});
+
+const form = document.getElementById('CREDIT-AMOUNT-form');
+const amountSpan = document.getElementById('CREDIT-AMOUNT-amount'); // Fixed ID (was CREDIT-AMOUNT-amount)
+const messageDiv = document.getElementById('CREDIT-AMOUNT-message');
+
+const CREDIT_AMT_pricingMatrix = {
+  "Equity Calls Segment": {
+    "Basic":    { "Monthly": 3499,  "Quarterly": 9999, "Yearly": 34999 },
+    "Advance":  { "Monthly": 3599,  "Quarterly": 10299, "Yearly": 35499 },
+    "Premium":  { "Monthly": 3699, "Quarterly": 10599, "Yearly": 35999 }
+  },
+  "Option Calls Segment": {
+    "Basic":    { "Monthly": 4499,  "Quarterly": 749,  "Yearly": 2899 },
+    "Advance":  { "Monthly": 4799,  "Quarterly": 1499, "Yearly": 4999 },
+    "Premium":  { "Monthly": 4999,  "Quarterly": 2499, "Yearly": 8999 }
+  },
+  "Portfolio Building": {
+    "Basic":    { "Monthly": 5999,  "Quarterly": 5499, "Yearly": 19999 },
+    "Advance":  { "Monthly": 8999,  "Quarterly": 6999, "Yearly": 24999 },
+    "Premium":  { "Monthly": 11999,  "Quarterly": 8499, "Yearly": 29999 }
+  }
+};
+
+// CALCULATION FUNCTIONS (ORIGINAL WORKING VERSION)
+function updateAmount() {
+  const service = document.getElementById('CREDIT-AMOUNT-service').value;
+  const plan = document.getElementById('CREDIT-AMOUNT-plan').value;
+  const term = document.getElementById('CREDIT-AMOUNT-term').value;
+
+  let amt = 0;
+  if (service && plan && term) {
+    amt = CREDIT_AMT_pricingMatrix?.[service]?.[plan]?.[term] || 0;
+  }
+  amountSpan.textContent = amt.toLocaleString('en-IN');
+}
+
+function updateTermOptions() {
+  const service = document.getElementById('CREDIT-AMOUNT-service').value;
+  const termSelect = document.getElementById('CREDIT-AMOUNT-term');
+
+  termSelect.innerHTML = '';
+
+  const defaultOption = document.createElement('option');
+  defaultOption.value = '';
+  defaultOption.textContent = 'Select Term Period';
+  termSelect.appendChild(defaultOption);
+
+  let terms = ["Monthly", "Quarterly", "Yearly"];
+  if (service === "Option Calls Segment" || service === "Portfolio Building") {
+    terms = ["Monthly"];
+  }
+
+  terms.forEach(term => {
+    const opt = document.createElement('option');
+    opt.value = term;
+    opt.textContent = term;
+    termSelect.appendChild(opt);
+  });
+
+  updateAmount();
+}
+
+// EVENT LISTENERS FOR CALCULATION (ORIGINAL WORKING VERSION)
+document.getElementById('CREDIT-AMOUNT-service').addEventListener('change', () => {
+  updateTermOptions();
+});
+
+['CREDIT-AMOUNT-plan', 'CREDIT-AMOUNT-term'].forEach(id =>
+  document.getElementById(id).addEventListener('change', updateAmount)
+);
+
+// FORM SUBMISSION WITH ERROR HANDLING (IMPROVED VERSION)
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const submitBtn = form.querySelector('button[type="submit"]');
+  submitBtn.disabled = true;
+  messageDiv.textContent = 'Submitting...';
+  messageDiv.style.color = 'blue';
+
+  try {
+    const data = new FormData(form);
+    const payload = {
+      name: data.get('name'),
+      email: data.get('email'),
+      mobile: data.get('mobile'),
+      service: data.get('service'),
+      planType: data.get('planType'),
+      term: data.get('term'),
+      amount: amountSpan.textContent
+    };
+
+    // Basic validation
+    if (!payload.name || !payload.email || !payload.mobile ||
+        !payload.service || !payload.planType || !payload.term ||
+        payload.amount === '0') {
+      throw new Error('Please fill all fields and select valid options');
+    }
+
+    const response = await fetch("https://script.google.com/macros/s/AKfycbyVyPFUvhrWFdNBVm_WHXQ8hTWcooXclo76SL2c2V2sn1FVF47s6cpa61EjguEn7rAfsA/exec", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (!response.ok) throw new Error('Server response not OK');
+
+    form.reset();
+    amountSpan.textContent = '0';
+    messageDiv.textContent = "✅ Thank you! You will receive the payment link shortly on WhatsApp.";
+    messageDiv.style.color = 'green';
+
+  } catch (error) {
+    console.error('Submission error:', error);
+    messageDiv.textContent = `❌ Error: ${error.message}`;
+    messageDiv.style.color = 'red';
+  } finally {
+    submitBtn.disabled = false;
+  }
 });
 
 })(jQuery);
