@@ -289,9 +289,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Determine Risk Profile
         let riskProfile;
-        if (totalScore >= 80) {
+        if (totalScore >= 75) {
             riskProfile = "Aggressive";
-        } else if (totalScore >= 50) {
+        } else if (totalScore >= 45) {
             riskProfile = "Moderate";
         } else {
             riskProfile = "Conservative";
