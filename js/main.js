@@ -362,6 +362,11 @@ document.addEventListener("DOMContentLoaded", function () {
       "Basics": { "Monthly": 5999 },
       "Advanced": { "Monthly": 8999 },
       "Premium": { "Monthly": 11999 }
+    },
+    "Intraday Equity": {
+      "Basics": { "Monthly": 4499 },
+      "Advanced": { "Monthly": 4699 },
+      "Premium": { "Monthly": 4999 }
     }
   };
 
@@ -373,17 +378,14 @@ document.addEventListener("DOMContentLoaded", function () {
       const selectedSegment = segmentField.value;
       const selectedPlan = planField.value;
 
-      // First selection - show all options but disable invalid ones
       if (!selectedSegment || !selectedPlan) {
           let optionsHTML = '<option value="" disabled selected>Select subscription period</option>';
-
-          // Always show all three options
           const allTimeframes = ["Monthly", "Quarterly", "Yearly"];
 
           allTimeframes.forEach(timeframe => {
               const disabled = selectedSegment &&
-                             selectedSegment !== "Equity calls segment" &&
-                             timeframe !== "Monthly";
+                               selectedSegment !== "Equity calls segment" &&
+                               timeframe !== "Monthly";
 
               optionsHTML += `
                   <option value="${timeframe}" ${disabled ? 'disabled' : ''}>
@@ -397,7 +399,6 @@ document.addEventListener("DOMContentLoaded", function () {
           return;
       }
 
-      // After valid selection - enforce business rules
       let allowedTimeframes;
       if (selectedSegment === "Equity calls segment") {
           allowedTimeframes = Object.keys(finalpriceCalculation[selectedSegment][selectedPlan] || []);
@@ -405,7 +406,6 @@ document.addEventListener("DOMContentLoaded", function () {
           allowedTimeframes = ["Monthly"]; // Force Monthly for others
       }
 
-      // Build available options
       let optionsHTML = '<option value="" disabled selected>Select subscription period</option>';
       allowedTimeframes.forEach(timeframe => {
           optionsHTML += `<option value="${timeframe}">${timeframe}</option>`;
@@ -413,7 +413,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
       timeframeField.innerHTML = optionsHTML;
 
-      // Handle price display
       const currentTimeframe = timeframeField.value;
       if (currentTimeframe && allowedTimeframes.includes(currentTimeframe)) {
           updateFinalpriceDisplay();
@@ -429,8 +428,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const selectedTimeframe = timeframeField.value;
 
       if (selectedSegment && selectedPlan && selectedTimeframe) {
-        const finalprice = finalpriceCalculation[selectedSegment][selectedPlan][selectedTimeframe];
-        finalpriceDisplay.textContent = finalprice;
+        const finalprice = finalpriceCalculation[selectedSegment]?.[selectedPlan]?.[selectedTimeframe];
+        finalpriceDisplay.textContent = finalprice || "0";
       } else {
         finalpriceDisplay.textContent = "0";
       }
@@ -451,7 +450,6 @@ document.addEventListener("DOMContentLoaded", function () {
       const timeframe = timeframeField.value;
       const finalprice = finalpriceDisplay.textContent;
 
-      // Validation (keep your existing validation code)
       if (!name || !mobile || !email || !segment || !plan || !timeframe || finalprice === "0") {
         alert("Please fill in all fields.");
         return;
@@ -477,7 +475,6 @@ document.addEventListener("DOMContentLoaded", function () {
         finalprice
       });
 
-      // Add loading state
       const originalButtonText = button.textContent;
       button.innerHTML = '<span class="spinner"></span> Submitting';
       button.disabled = true;
@@ -497,7 +494,6 @@ document.addEventListener("DOMContentLoaded", function () {
         mode: "no-cors"
       })
       .then(() => {
-        // Clear form
         nameField.value = "";
         mobileField.value = "";
         emailField.value = "";
@@ -507,38 +503,33 @@ document.addEventListener("DOMContentLoaded", function () {
         finalpriceDisplay.textContent = "0";
         timeframeField.innerHTML = originalTimeframeOptions;
 
-        // Show success state briefly before resetting
         button.textContent = "✓ Submitted";
         setTimeout(() => {
           button.textContent = originalButtonText;
           button.disabled = false;
         }, 2000);
 
-        // Show custom popup
-          const paymentPopup = document.createElement('div');
-          paymentPopup.className = 'payment-link-popup';
-          paymentPopup.innerHTML = `
-            <div class="popup-content">
-              <h3>Thank You!</h3>
-              <p>You'll receive payment links via:</p>
-              <ul>
-                <li>Email at <strong>${email}</strong></li>
-                <li>WhatsApp on <strong>${mobile}</strong></li>
-              </ul>
-              <p>Please complete payment within 24 hours to activate your membership.</p>
-              <button class="close-popup">OK</button>
-            </div>
-          `;
+        const paymentPopup = document.createElement('div');
+        paymentPopup.className = 'payment-link-popup';
+        paymentPopup.innerHTML = `
+          <div class="popup-content">
+            <h3>Thank You!</h3>
+            <p>You'll receive payment links via:</p>
+            <ul>
+              <li>Email at <strong>${email}</strong></li>
+              <li>WhatsApp on <strong>${mobile}</strong></li>
+            </ul>
+            <p>Please complete payment within 24 hours to activate your membership.</p>
+            <button class="close-popup">OK</button>
+          </div>
+        `;
 
-          document.body.appendChild(paymentPopup);
-
-          // Close popup handler
-          paymentPopup.querySelector('.close-popup').addEventListener('click', () => {
-            document.body.removeChild(paymentPopup);
-            button.textContent = originalButtonText;
-            button.disabled = false;
-          });
-
+        document.body.appendChild(paymentPopup);
+        paymentPopup.querySelector('.close-popup').addEventListener('click', () => {
+          document.body.removeChild(paymentPopup);
+          button.textContent = originalButtonText;
+          button.disabled = false;
+        });
 
       })
       .catch(error => {
@@ -548,7 +539,6 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("There was an error submitting the data. Please try again.");
       });
     });
-
 
   // Initialize form
   updateForm();
