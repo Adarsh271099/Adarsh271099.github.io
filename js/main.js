@@ -273,6 +273,8 @@ document.addEventListener('DOMContentLoaded', function() {
             name: document.getElementById('name').value.trim(),
             email: document.getElementById('email').value.trim(),
             mobile: document.getElementById('mobile').value.trim(),
+            pan: document.getElementById('pan').value.trim(),       // ✅ Added PAN
+            dob: document.getElementById('dob').value.trim(),       // ✅ Added DOB
             timestamp: new Date().toISOString()
         };
 
@@ -310,8 +312,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Debug: Log the data being sent
         console.log("Submitting data:", answers);
-
-
 
         try {
             // Send to Google Sheets
@@ -445,14 +445,12 @@ document.addEventListener("DOMContentLoaded", function () {
       const name = nameField.value.trim();
       const mobile = mobileField.value.trim();
       const email = emailField.value.trim();
-      const pan = pancardField.value.trim();      // ✅ Added
-      const dob = dobField.value.trim();          // ✅ Added
       const segment = segmentField.value;
       const plan = planField.value;
       const timeframe = timeframeField.value;
       const finalprice = finalpriceDisplay.textContent;
 
-      if (!name || !mobile || !email || !pan || !dob || !segment || !plan || !timeframe || finalprice === "0") {
+      if (!name || !mobile || !email || !segment || !plan || !timeframe || finalprice === "0") {
         alert("Please fill in all fields.");
         return;
       }
@@ -471,8 +469,6 @@ document.addEventListener("DOMContentLoaded", function () {
         name,
         mobile,
         email,
-        pan,
-        dob,
         segment,
         membership_plan: plan,
         subscription_timeframe: timeframe,
@@ -487,8 +483,6 @@ document.addEventListener("DOMContentLoaded", function () {
       formData.append("name", name);
       formData.append("mobile", mobile);
       formData.append("email", email);
-      formData.append("pan", pan);                   // ✅ Added
-      formData.append("dob", dob);                   // ✅ Added
       formData.append("segment", segment);
       formData.append("membership_plan", plan);
       formData.append("subscription_timeframe", timeframe);
@@ -503,8 +497,6 @@ document.addEventListener("DOMContentLoaded", function () {
         nameField.value = "";
         mobileField.value = "";
         emailField.value = "";
-        pancardField.value = "";         // ✅ Clear PAN field
-        dobField.value = "";             // ✅ Clear DOB field
         segmentField.value = "";
         planField.value = "";
         timeframeField.value = "";
@@ -516,7 +508,6 @@ document.addEventListener("DOMContentLoaded", function () {
           button.textContent = originalButtonText;
           button.disabled = false;
         }, 2000);
-
 
         const paymentPopup = document.createElement('div');
         paymentPopup.className = 'payment-link-popup';
