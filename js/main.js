@@ -315,7 +315,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         try {
             // Send to Google Sheets
-            const response = await fetch('https://script.google.com/macros/s/AKfycbw-1_NPhZ60M_Bl9_XZBAOx1YM3knZm_JCUNQEJcL4v5Ok7vj8KMVGYfP8UjRvWlTEZ/exec', {
+            const response = await fetch('https://script.google.com/macros/s/AKfycbzQmbfbC4AWThsJ_EE75ni0O4a5VQg3Iq6vyKJPhpeUMKfxGdzr0jZBJZa7QoNGqoKG/exec', {
                 method: 'POST',
                 body: JSON.stringify(answers),
                 headers: { 'Content-Type': 'application/json' },
