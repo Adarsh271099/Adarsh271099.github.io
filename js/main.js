@@ -445,12 +445,14 @@ document.addEventListener("DOMContentLoaded", function () {
       const name = nameField.value.trim();
       const mobile = mobileField.value.trim();
       const email = emailField.value.trim();
+      const pan = pancardField.value.trim();      // ✅ Added
+      const dob = dobField.value.trim();          // ✅ Added
       const segment = segmentField.value;
       const plan = planField.value;
       const timeframe = timeframeField.value;
       const finalprice = finalpriceDisplay.textContent;
 
-      if (!name || !mobile || !email || !segment || !plan || !timeframe || finalprice === "0") {
+      if (!name || !mobile || !email || !pan || !dob || !segment || !plan || !timeframe || finalprice === "0") {
         alert("Please fill in all fields.");
         return;
       }
@@ -469,6 +471,8 @@ document.addEventListener("DOMContentLoaded", function () {
         name,
         mobile,
         email,
+        pan,
+        dob,
         segment,
         membership_plan: plan,
         subscription_timeframe: timeframe,
@@ -483,12 +487,14 @@ document.addEventListener("DOMContentLoaded", function () {
       formData.append("name", name);
       formData.append("mobile", mobile);
       formData.append("email", email);
+      formData.append("pan", pan);                   // ✅ Added
+      formData.append("dob", dob);                   // ✅ Added
       formData.append("segment", segment);
       formData.append("membership_plan", plan);
       formData.append("subscription_timeframe", timeframe);
       formData.append("finalprice", finalprice);
 
-      fetch("https://script.google.com/macros/s/AKfycbwfzEKt77s0hQMhTyn5frxoPfWqTfafziu8s04VElgYTGkcaWErmtLjTEHo0cjkIIHP/exec", {
+      fetch("https://script.google.com/macros/s/AKfycbzQmbfbC4AWThsJ_EE75ni0O4a5VQg3Iq6vyKJPhpeUMKfxGdzr0jZBJZa7QoNGqoKG/exec", {
         method: "POST",
         body: formData,
         mode: "no-cors"
@@ -497,6 +503,8 @@ document.addEventListener("DOMContentLoaded", function () {
         nameField.value = "";
         mobileField.value = "";
         emailField.value = "";
+        pancardField.value = "";         // ✅ Clear PAN field
+        dobField.value = "";             // ✅ Clear DOB field
         segmentField.value = "";
         planField.value = "";
         timeframeField.value = "";
@@ -508,6 +516,7 @@ document.addEventListener("DOMContentLoaded", function () {
           button.textContent = originalButtonText;
           button.disabled = false;
         }, 2000);
+
 
         const paymentPopup = document.createElement('div');
         paymentPopup.className = 'payment-link-popup';
