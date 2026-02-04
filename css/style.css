@@ -3451,3 +3451,381 @@ input:checked + .slider:before {
   cursor: pointer;
   margin-top: 15px;
 }
+
+/* Everything scoped — zero leakage */
+.valentine-wrap {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.valentine-buttons {
+    position: relative;
+    width: 260px;
+    height: 120px;
+    margin-top: 30px;
+    overflow: hidden; /* 👈 THIS STOPS SCROLLBARS */
+}
+
+
+.valentine-wrap button {
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.valentine-wrap #yesBtn {
+    background-color: #ff4d6d;
+    color: white;
+}
+
+.valentine-wrap #noBtn {
+    position: absolute;
+    background-color: #ccc;
+}
+
+.try-again-box {
+    margin-top: 16px;
+    padding: 10px 18px;
+    border-radius: 10px;
+    background: #fff0f3;
+    color: #b3003c;
+    font-weight: 600;
+    font-size: 15px;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+}
+
+.try-again-box.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* ---------- BACKGROUND ---------- */
+.valentine-bg {
+    height: 100vh;
+    width: 100%;
+    background:
+        radial-gradient(circle at center, rgba(255,255,255,0.25), rgba(255,255,255,0) 60%),
+        linear-gradient(180deg, #ee9ca7 0%, #ffdde1 50%, #ee9ca7 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* ---------- FLOATING HEARTS ---------- */
+/* ---------- FLOATING HEARTS ---------- */
+.heart {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: #ffffff;
+
+
+    /* shape + size */
+    transform: rotate(45deg) scale(var(--scale, 1));
+    border-radius: 2px; /* 👈 KEY LINE */
+
+    /* horizontal position */
+    left: calc(100% * var(--x));
+
+    /* animation */
+    animation-name: floatUp;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-delay: calc(-1s * var(--d));
+    animation-duration: calc(1s + 6s * var(--s));
+
+    filter: brightness(1) opacity(0.85); /* 👈 uniform opacity */
+}
+
+
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: #ffffff;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -9px;
+    left: 0;
+}
+
+.heart::after {
+    left: -9px;
+    top: 0;
+}
+
+
+@keyframes floatUp {
+    0% {
+        bottom: -20%;
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        bottom: 120%;
+        opacity: 0;
+    }
+}
+
+
+/* ---------- CARD ---------- */
+.valentine-wrap {
+    z-index: 2;
+}
+
+.valentine-card {
+    background: #ffffff;
+    width: 360px;
+    padding: 32px 28px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.18);
+    animation: popIn 0.4s ease;
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.valentine-card h1 {
+    font-size: 24px;
+    color: #c9184a;
+    margin-bottom: 6px;
+}
+
+.subtext {
+    font-size: 14px;
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+
+/* ---------- BUTTON AREA ---------- */
+.valentine-buttons {
+    position: relative;
+    width: 420px;
+    height: 220px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* ---------- BUTTON AREA ---------- */
+.valentine-buttons {
+    position: relative;
+    width: 420px;
+    height: 220px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+}
+
+
+/* ---------- BUTTONS ---------- */
+/* YES button — true center */
+#yesBtn {
+    position: absolute;
+    top: 20px;
+    left: 20%;
+    transform: translateX(-50%);
+    background: #ff4d6d;
+    color: #fff;
+    z-index: 2;
+}
+
+/* NO button — offset from center */
+#noBtn {
+    position: absolute;
+    top: 20px;
+    left: calc(50% - 50px); /* 👈 clearly away from Yes */
+    background: #dee2e6;
+    z-index: 1;
+}
+
+
+
+/* ---------- TRY AGAIN MESSAGE ---------- */
+.try-again-box {
+    margin-top: 18px;
+    padding: 10px 18px;
+    border-radius: 12px;
+    background: #fff0f3;
+    color: #b3003c;
+    font-weight: 600;
+    font-size: 14px;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.25s ease;
+    pointer-events: none;
+}
+
+.try-again-box.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+/* ===============================
+   CELEBRATION WRAPPER
+   =============================== */
+
+.valentine-success {
+    min-height: 100vh;
+    width: 100%;
+    background: radial-gradient(circle at center, #ffe6eb, #ff9aa2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+/* ===============================
+   CARD
+   =============================== */
+
+.valentine-success .success-card {
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 24px;
+    text-align: center;
+    width: 360px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+    animation: successPop 0.6s ease;
+    z-index: 2;
+}
+
+@keyframes successPop {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.valentine-success h1 {
+    color: #ff4d6d;
+    margin-bottom: 10px;
+}
+
+.valentine-success p {
+    color: #555;
+    font-size: 15px;
+}
+
+.valentine-success .line {
+    margin-top: 10px;
+}
+
+/* ===============================
+   BIG HEART
+   =============================== */
+
+.valentine-success .big-heart {
+    font-size: 64px;
+    margin: 20px 0;
+    animation: heartPulse 1.2s infinite;
+}
+
+@keyframes heartPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* ===============================
+   BUTTON
+   =============================== */
+
+.valentine-success .again-btn {
+    margin-top: 20px;
+    padding: 12px 26px;
+    border-radius: 12px;
+    border: none;
+    background: #ff4d6d;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* ===============================
+   FLOATING HEARTS
+   =============================== */
+
+.valentine-success .success-heart {
+    position: absolute;
+    bottom: -40px;
+    width: 20px;
+    height: 20px;
+    background: #ffffff;
+    transform: rotate(45deg);
+    animation: successFloat 8s infinite linear;
+    opacity: 0.8;
+}
+
+.valentine-success .success-heart::before,
+.valentine-success .success-heart::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #ffffff;
+    border-radius: 50%;
+}
+
+.valentine-success .success-heart::before {
+    top: -10px;
+    left: 0;
+}
+
+.valentine-success .success-heart::after {
+    left: -10px;
+    top: 0;
+}
+
+.valentine-success .success-heart:nth-child(2) { left: 15%; animation-delay: -2s; }
+.valentine-success .success-heart:nth-child(3) { left: 35%; animation-delay: -5s; }
+.valentine-success .success-heart:nth-child(4) { left: 60%; animation-delay: -3s; }
+.valentine-success .success-heart:nth-child(5) { left: 80%; animation-delay: -6s; }
+
+@keyframes successFloat {
+    from { bottom: -40px; opacity: 0; }
+    to   { bottom: 120%; opacity: 1; }
+}
+
+
+
+
