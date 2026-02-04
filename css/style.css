@@ -3747,7 +3747,6 @@ input:checked + .slider:before {
 }
 
 
-
 /* ===============================
    CELEBRATION WRAPPER
    =============================== */
@@ -3775,10 +3774,11 @@ input:checked + .slider:before {
     text-align: center;
     width: 360px;
     box-shadow: 0 30px 60px rgba(0,0,0,0.2);
-    animation: successPop 0.6s ease;
+    animation: successPop 0.6s ease forwards;
     z-index: 2;
 }
 
+/* DESKTOP ANIMATION */
 @keyframes successPop {
     from {
         transform: scale(0.8);
@@ -3880,26 +3880,25 @@ input:checked + .slider:before {
 }
 
 /* ===============================
-   MOBILE OPTIMIZATION
+   MOBILE OPTIMIZATION (FINAL)
    =============================== */
 @media (max-width: 600px) {
+
+    /* Override animation itself */
     .valentine-success .success-card {
-        width: 90%;
-        max-width: 420px;
-        padding: 48px 32px;
-        border-radius: 28px;
+        animation: successPopMobile 0.6s ease forwards;
     }
+}
 
-    .valentine-success .big-heart {
-        font-size: 72px;
+/* MOBILE SCALE ANIMATION */
+@keyframes successPopMobile {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
     }
-
-    .valentine-success h1 {
-        font-size: 28px;
-    }
-
-    .valentine-success p {
-        font-size: 16px;
+    to {
+        transform: scale(1.8); /* 👈 TRUE 180% SIZE */
+        opacity: 1;
     }
 }
 
